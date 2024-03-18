@@ -10,7 +10,7 @@ COPY . /app
 
 # Install Python
 RUN apt-get update
-# RUN apt-get install python3
+RUN apt-get install python3
 RUN python -m pip install --upgrade pip
 # RUN pip install --upgrade pip
 
