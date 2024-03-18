@@ -12,8 +12,6 @@ COPY . /app
 RUN apt update
 RUN apt install -y python3
 RUN apt install -y python3-pip
-# https://www.quora.com/How-does-one-install-pip-in-a-Docker-container-using-a-Dockerfile
-RUN python3 get-pip.py
 
 # Install any needed packages specified in requirements.txt
 RUN npm install -g @angular/cli
@@ -23,7 +21,7 @@ RUN ng build --output-path="./dist/"
 RUN python3 -m venv .venv
 RUN source .venv/bin/activate
 # Install any needed packages specified in requirements.txt
-RUN pip3 install --no-cache-dir -r ./back_end/requirements.txt
+RUN sudo pip3 install --no-cache-dir -r ./back_end/requirements.txt
 # Make port 8080 available to the world outside this container
 EXPOSE 8080
 # Command to run the application using Uvicorn
