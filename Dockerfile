@@ -20,7 +20,7 @@ RUN npm install
 RUN ng build --output-path="./dist/"
 
 RUN python3 -m venv .venv
-RUN source .venv/bin/activate
+RUN . .venv/bin/activate
 # Install any needed packages specified in requirements.txt
 RUN pip3 install --no-cache-dir -r ./back_end/requirements.txt
 # RUN sudo pip3 install --no-cache-dir -r ./back_end/requirements.txt
