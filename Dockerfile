@@ -11,8 +11,6 @@ COPY . /app
 RUN npm install -g @angular/cli
 RUN npm install
 RUN ng build --output-path="./dist/"
-# Make port 8080 available to the world outside this container
-EXPOSE 8080
 
 
 FROM python:3.12.2
@@ -23,7 +21,6 @@ FROM python:3.12.2
 # COPY . /app
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r ./back_end/requirements.txt
-RUN ng build --output-path="./dist/"
 # Make port 8080 available to the world outside this container
 EXPOSE 8080
 # Command to run the application using Uvicorn
