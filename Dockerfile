@@ -9,7 +9,10 @@ WORKDIR /app
 COPY . /app
 
 # Install Python
-RUN apt-get update && apt-get install -y python3
+RUN apt-get update
+# RUN apt-get install python3
+RUN apt-get update && apt-get install python3-pip
+# RUN pip install --upgrade pip
 
 # Install any needed packages specified in requirements.txt
 RUN npm install -g @angular/cli
