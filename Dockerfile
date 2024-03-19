@@ -13,6 +13,7 @@ RUN apt update
 RUN apt install -y python3
 RUN apt install -y python3-pip
 RUN apt install -y python3-venv
+RUN apt install -y python3-full
 
 # Install any needed packages specified in requirements.txt
 RUN npm install -g @angular/cli
