@@ -18,10 +18,13 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
-    "useDefineForClassFields": false,
+    "useDefineForClassFields": true,
+    "useUnknownInCatchVariables": true,
+    "strictNullChecks": true,
     "lib": [
       "ES2022",
-      "dom"
+      "dom",
+      "DOM.Iterable",
     ]
   },
   "angularCompilerOptions": {
