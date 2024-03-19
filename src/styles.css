@@ -118,6 +118,11 @@ progress, meter {
   display: block;
 }
 
+input, textarea {
+  color: inherit;
+  font-size: inherit;
+}
+
 fieldset, blockquote, figure {
   margin: 0;
 }
