@@ -21,9 +21,10 @@ RUN npm install
 RUN ng build --output-path="./dist/"
 
 RUN python3 -m venv .venv
-RUN . .venv/bin/activate
+# RUN . .venv/bin/python
+RUN .venv/bin/python pip install --no-cache-dir -r ./back_end/requirements.txt
 # Install any needed packages specified in requirements.txt
-RUN pip3 install --no-cache-dir -r ./back_end/requirements.txt
+# RUN pip3 install --no-cache-dir -r ./back_end/requirements.txt
 # RUN sudo pip3 install --no-cache-dir -r ./back_end/requirements.txt
 # Make port 8080 available to the world outside this container
 EXPOSE 8080
