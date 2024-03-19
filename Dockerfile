@@ -1,6 +1,10 @@
 # https://dev.to/0xnari/deploying-fastapi-app-with-google-cloud-run-13f3
 # https://medium.com/@saverio3107/deploy-fastapi-with-docker-cloud-run-a-step-by-step-guide-a01c42df0fee
 
+# What does -y mean in apt-get -y install command?
+# https://askubuntu.com/a/672893
+
+
 FROM python:3.12.2
 
 # Set the working directory to /app
