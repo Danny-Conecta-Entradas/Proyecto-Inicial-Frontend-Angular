@@ -4,9 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --output-path=\"./dist/\"",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "python-dev-server": "uvicorn back_end.src.main:app --port=8080 --reload"
   },
   "private": true,
   "dependencies": {
