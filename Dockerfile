@@ -13,9 +13,11 @@ RUN apt update
 RUN apt install -y nodejs
 RUN apt install -y npm
 
-# Install any needed packages specified in requirements.txt
+# Install Angular CLI
 RUN npm install -g @angular/cli
+# Install package.json dependencies
 RUN npm install
+# Create build of the Angular project in /dist
 RUN ng build --output-path="./dist/"
 
 # Install any needed packages specified in requirements.txt
