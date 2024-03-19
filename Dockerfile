@@ -17,6 +17,7 @@ RUN apt update
 # RUN apt install -y python3-full
 
 RUN apt install -y nodejs
+RUN apt install -y npm
 
 # Install any needed packages specified in requirements.txt
 RUN npm install -g @angular/cli
