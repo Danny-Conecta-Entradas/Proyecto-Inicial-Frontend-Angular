@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import AuthService from '../../services/auth.service.js'
 
 @Component({
   selector: 'app-home[data-page-component]',
@@ -7,9 +8,15 @@ import { Component } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
   readonly API_ORIGIN = 'https://proyecto-inicial-backend-agk6kyxhfa-uc.a.run.app/'
+
+  private _authService = inject(AuthService)
+
+  async ngOnInit(): Promise<void> {
+    console.log(await this._authService.isUserLogged())
+  }
 
   async sendData(data: FormData): Promise<unknown> {
     const endpoint = new URL('/api/send-data/', this.API_ORIGIN)

@@ -1,5 +1,14 @@
 # ProyectoInicialFrontendAngular
 
+https://www.youtube.com/watch?v=Vo8-d2f2dTg&ab_channel=CarlosMorales
+https://github.com/cjosue15/auth-firebase/blob/master/src/app/core/services/auth.service.ts
+https://github.com/cjosue15/auth-firebase/blob/master/src/app/app.config.ts
+https://github.com/cjosue15/auth-firebase/blob/master/src/app/firebase.config.ts
+https://github.com/cjosue15/auth-firebase/blob/master/src/app/app-routing.ts
+
+
+# Angular README
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
 
 ## Development server

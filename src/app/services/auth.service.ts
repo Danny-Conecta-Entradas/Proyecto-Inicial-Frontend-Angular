@@ -1,15 +1,21 @@
-import { Injectable } from '@angular/core'
-import { AngularFireAuth } from '@angular/fire/compat/auth'
+import { Injectable, inject } from '@angular/core'
+import { Auth, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth'
 import firebase from '@firebase/app-compat'
+import { firstValueFrom } from 'rxjs'
 
 
+@Injectable({
+  providedIn: 'root',
+})
 export default class AuthService {
 
-  constructor(private _auth: AngularFireAuth) {}
+  private _auth = inject(Auth)
+
+  readonly authState = authState(this._auth)
 
   async logIn(email: string, password: string) {
-    const userCredentialsOrError = await this._auth.signInWithEmailAndPassword(email, password)
-                              .catch(reason => new Error(reason))
+    const userCredentialsOrError = await signInWithEmailAndPassword(this._auth, email, password)
+                                   .catch((reason: any) => new Error(reason))
 
     if (userCredentialsOrError instanceof Error) {
       console.error(userCredentialsOrError)
@@ -25,8 +31,8 @@ export default class AuthService {
   }
 
   async signUp(email: string, password: string) {
-    const userCredentialsOrError = await this._auth.createUserWithEmailAndPassword(email, password)
-                              .catch(reason => new Error(reason))
+    const userCredentialsOrError = await createUserWithEmailAndPassword(this._auth, email, password)
+                                         .catch((reason: any) => new Error(reason))
 
     if (userCredentialsOrError instanceof Error) {
       console.error(userCredentialsOrError)
@@ -37,8 +43,17 @@ export default class AuthService {
     return userCredentialsOrError
   }
 
-  getLoggedUserData() {
-    return this._auth.authState
+  async getLoggedUserData() {
+    // https://rxjs.dev/deprecations/to-promise
+    const userData = await firstValueFrom(this.authState)
+
+    return userData
+  }
+
+  async isUserLogged() {
+    const userData = await this.getLoggedUserData()
+
+    return Boolean(userData)
   }
 
   async updateUserProfile(name: string, photo: string): Promise<boolean> {
