@@ -27,4 +27,8 @@ export const routes: Routes = [
     component: HomeComponent,
     canActivate: [authGuard],
   },
+  {
+    path: '**',
+    redirectTo: 'register',
+  }
 ]
