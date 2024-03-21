@@ -1,1 +1,21 @@
-<p>login-page works!</p>
+<h1>Login Form</h1>
+<form class="register-form" (submit)="onFormSubmit($event)">
+    <div class="input">
+        <label>
+            <div>Email</div>
+            <input type="email" name="email">
+        </label>
+    </div>
+    <div class="input">
+        <label>
+            <div>Password</div>
+            <input type="password" name="password">
+        </label>
+    </div>
+    <button class="button" type="submit">Log in</button>
+    <span class="info">
+        Do you need to create an account?
+        <br>
+        <a routerLink="/register">Sign Up</a>
+    </span>
+</form>

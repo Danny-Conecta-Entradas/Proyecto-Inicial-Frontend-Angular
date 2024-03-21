@@ -15,13 +15,6 @@ export default class AuthService {
 
   async logIn(email: string, password: string) {
     const userCredentialsOrError = await signInWithEmailAndPassword(this._auth, email, password)
-                                   .catch((reason: any) => new Error(reason))
-
-    if (userCredentialsOrError instanceof Error) {
-      console.error(userCredentialsOrError)
-      alert(`No se ha podido iniciar sesión. Error: ${userCredentialsOrError.message}`)
-      return null
-    }
 
     return userCredentialsOrError
   }
@@ -32,13 +25,6 @@ export default class AuthService {
 
   async signUp(email: string, password: string) {
     const userCredentialsOrError = await createUserWithEmailAndPassword(this._auth, email, password)
-                                         .catch((reason: any) => new Error(reason))
-
-    if (userCredentialsOrError instanceof Error) {
-      console.error(userCredentialsOrError)
-      alert(`No se ha podido registrar la cuenta. Error: ${userCredentialsOrError.message}`)
-      return null
-    }
 
     return userCredentialsOrError
   }

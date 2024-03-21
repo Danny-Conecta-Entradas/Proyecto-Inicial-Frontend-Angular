@@ -14,3 +14,15 @@ app-root {
     height: 100%;
   }
 }
+
+a {
+  color: #00b6ff;
+
+  &:visited {
+    color: #c164ff;
+  }
+
+  &:hover {
+    text-decoration-line: underline;
+  }
+}

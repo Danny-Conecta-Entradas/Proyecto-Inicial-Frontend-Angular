@@ -116,6 +116,7 @@ input, select, textarea,
 button,
 progress, meter {
   display: block;
+  user-select: none;
 }
 
 input, textarea {

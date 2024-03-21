@@ -1,5 +1,6 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import AuthService from '../../services/auth.service.js'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-home[data-page-component]',
@@ -8,15 +9,13 @@ import AuthService from '../../services/auth.service.js'
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
   readonly API_ORIGIN = 'https://proyecto-inicial-backend-agk6kyxhfa-uc.a.run.app/'
 
   private _authService = inject(AuthService)
 
-  async ngOnInit(): Promise<void> {
-    console.log(await this._authService.isUserLogged())
-  }
+  private _router = inject(Router)
 
   async sendData(data: FormData): Promise<unknown> {
     const endpoint = new URL('/api/send-data/', this.API_ORIGIN)
@@ -32,6 +31,11 @@ export class HomeComponent implements OnInit {
     })
 
     return await response.json()
+  }
+
+  async logOut() {
+    await this._authService.logOut()
+    this._router.navigateByUrl('/')
   }
 
   onFormSubmit(event: SubmitEvent) {
