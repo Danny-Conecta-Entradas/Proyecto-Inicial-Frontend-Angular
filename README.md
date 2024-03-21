@@ -7,6 +7,7 @@ https://github.com/cjosue15/auth-firebase/blob/master/src/app/firebase.config.ts
 https://github.com/cjosue15/auth-firebase/blob/master/src/app/app-routing.ts  
 
 
+
 # Angular README
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
