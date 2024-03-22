@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import AuthService from '../../services/auth.service.js'
 import { Router, RouterModule } from '@angular/router'
 import { FirebaseError } from 'firebase/app'
+import { GoogleLogInComponent } from '../../components/google-log-in/google-log-in.component.js'
 
 interface LoginFormData {
   email: string
@@ -12,7 +13,7 @@ interface LoginFormData {
 @Component({
   selector: 'app-login-page[data-page-component]',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, GoogleLogInComponent],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
 })
@@ -42,6 +43,15 @@ export class LoginPageComponent {
     }
 
     this._router.navigateByUrl('/home')
+  }
+
+  onGoogleLogInSuccess() {
+    this._router.navigateByUrl('/home')
+  }
+
+  onGoogleLogInError(error: FirebaseError) {
+    console.warn(error)
+    alert(`No se puedo registrar o iniciar sesión con la cuenta de Google. ${error.message}`)
   }
 
 }

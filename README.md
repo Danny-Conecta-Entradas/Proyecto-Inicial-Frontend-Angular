@@ -6,6 +6,9 @@ https://github.com/cjosue15/auth-firebase/blob/master/src/app/app.config.ts
 https://github.com/cjosue15/auth-firebase/blob/master/src/app/firebase.config.ts  
 https://github.com/cjosue15/auth-firebase/blob/master/src/app/app-routing.ts  
 https://firebase.google.com/docs/auth/web/google-signin  
+https://angular.io/guide/content-projection  
+https://angular.io/api/core/HostListener  
+https://angular.io/api/core/EventEmitter
 
 
 # Angular README

@@ -18,4 +18,5 @@
         <br>
         <a routerLink="/login">Log In</a>
     </span>
+    <google-log-in role="button" tabindex="0" (success)="onGoogleSignUpSuccess()" (error)="onGoogleSignUpError($event)">Sign Up with Google</google-log-in>
 </form>

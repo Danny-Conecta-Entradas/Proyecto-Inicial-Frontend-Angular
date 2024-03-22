@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core'
-import { Auth, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth'
+import { Auth, GoogleAuthProvider, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from '@angular/fire/auth'
 import firebase from '@firebase/app-compat'
 import { firstValueFrom } from 'rxjs'
 
@@ -27,6 +27,15 @@ export default class AuthService {
     const userCredentialsOrError = await createUserWithEmailAndPassword(this._auth, email, password)
 
     return userCredentialsOrError
+  }
+
+  async signInWithGoogle() {
+    // https://firebase.google.com/docs/auth/web/google-signin
+    const provider = new GoogleAuthProvider()
+
+    const credentials = await signInWithPopup(this._auth, provider)
+
+    return credentials
   }
 
   async getLoggedUserData() {

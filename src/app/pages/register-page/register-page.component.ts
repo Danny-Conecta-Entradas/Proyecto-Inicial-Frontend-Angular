@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import AuthService from '../../services/auth.service.js'
 import { Router, RouterModule } from '@angular/router'
 import { FirebaseError } from 'firebase/app'
+import { GoogleLogInComponent } from '../../components/google-log-in/google-log-in.component.js'
 
 interface RegisterFormData {
   email: string
@@ -11,7 +12,7 @@ interface RegisterFormData {
 @Component({
   selector: 'app-register-page[data-page-component]',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, GoogleLogInComponent],
   templateUrl: './register-page.component.html',
   styleUrl: './register-page.component.css'
 })
@@ -41,6 +42,15 @@ export class RegisterPageComponent {
     }
 
     this._router.navigateByUrl('/home')
+  }
+
+  onGoogleSignUpSuccess() {
+    this._router.navigateByUrl('/home')
+  }
+
+  onGoogleSignUpError(error: FirebaseError) {
+    console.warn(error)
+    alert(`No se puedo registrar o iniciar sesión con la cuenta de Google. ${error.message}`)
   }
 
 }
