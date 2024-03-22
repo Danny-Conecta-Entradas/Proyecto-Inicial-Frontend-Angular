@@ -3,6 +3,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component.js'
 import { RegisterPageComponent } from './pages/register-page/register-page.component.js'
 import { HomeComponent } from './pages/home/home.component.js'
 import { authGuard, publicGuard } from './guards/auth.guards.js'
+import { DataListComponent } from './pages/data-list/data-list.component.js'
 
 // https://angular.io/api/router/Route
 
@@ -25,6 +26,11 @@ export const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'data-list',
+    component: DataListComponent,
     canActivate: [authGuard],
   },
   {
