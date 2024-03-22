@@ -12,7 +12,12 @@ app-root {
   & > [data-page-component] {
     width: 100%;
     height: 100%;
+    overflow: auto;
   }
+}
+
+::selection {
+  background-color: #1a1a1ab5;
 }
 
 a {
