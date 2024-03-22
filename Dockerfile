@@ -30,4 +30,5 @@ RUN pip install --no-cache-dir -r ./back_end/requirements.txt
 # Make port 8080 available to the world outside this container
 EXPOSE 8080
 # Command to run the application using Uvicorn
+# https://stackoverflow.com/questions/20778771/what-is-the-difference-between-0-0-0-0-127-0-0-1-and-localhost
 CMD ["uvicorn", "back_end.src.main:app", "--host", "0.0.0.0", "--port", "8080"]
