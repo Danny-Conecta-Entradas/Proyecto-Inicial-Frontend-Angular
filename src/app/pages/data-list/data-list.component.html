@@ -2,23 +2,28 @@
 <table class="table">
     <thead>
         <tr>
-            <th [style]="{width: '8rem'}">TimeStamp</th>
-            <th [style]="{width: '8rem'}">Name</th>
-            <th [style]="{width: '8rem'}">DNI</th>
-            <th [style]="{width: '8rem'}">Birth Date</th>
+            <th [style]="{width: '10rem'}">TimeStamp</th>
+            <th [style]="{width: '10rem'}">Name</th>
+            <th [style]="{width: '10rem'}">DNI</th>
+            <th [style]="{width: '10rem'}">Birth Date</th>
         </tr>
     </thead>
     <tbody>
-        @for (item of listData; track item.timestamp) {
-            <tr>
-                <td>{{item.timestamp}}</td>
-                <td>{{item.name}}</td>
-                <td>{{item.dni}}</td>
-                <td>{{item.birth_date}}</td>
-            </tr>
-        }
-        @empty {
+        @if (listData == null) {
             <spinner-widget class="spinner" />
+        }
+        @else {
+            @for (item of listData; track getDateValue(item.creation_date)) {
+                <tr>
+                    <td>{{item.creation_date}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.dni}}</td>
+                    <td>{{item.birth_date}}</td>
+                </tr>
+            }
+            @empty {
+                <div class="emptylist-message">List is empty</div>
+            }
         }
     </tbody>
 </table>

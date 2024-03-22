@@ -77,5 +77,14 @@
       inset: 0;
       margin: auto;
     }
+
+    & > .emptylist-message {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+
+      display: grid;
+      place-items: center;
+    }
   }
 }
