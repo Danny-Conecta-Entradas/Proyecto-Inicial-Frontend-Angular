@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import AuthService from '../../services/auth.service.js'
 import { Router } from '@angular/router'
+import { SpinnerComponent } from '../../components/spinner/spinner.component.js'
 
 @Component({
   selector: 'app-home[data-page-component]',
   standalone: true,
-  imports: [],
+  imports: [SpinnerComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -16,6 +17,8 @@ export class HomeComponent {
   private _authService = inject(AuthService)
 
   private _router = inject(Router)
+
+  isLoading = false
 
   async sendData(data: FormData): Promise<unknown> {
     const endpoint = new URL('/api/send-data/', this.API_ORIGIN)
@@ -34,7 +37,10 @@ export class HomeComponent {
   }
 
   async logOut() {
+    this.isLoading = true
     await this._authService.logOut()
+    this.isLoading = false
+
     this._router.navigateByUrl('/')
   }
 
@@ -53,12 +59,15 @@ export class HomeComponent {
 
     console.log(resultData)
 
+    this.isLoading = true
+
     this.sendData(resultData)
     .then(() => alert('Data uploaded successfuly.'))
     .catch((reason: unknown) => {
-      console.error(reason)
+      console.warn(reason)
       alert('An error occurred after submiting the form.')
     })
+    .finally(() => this.isLoading = false)
   }
 
 }

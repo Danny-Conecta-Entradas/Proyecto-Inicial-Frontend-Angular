@@ -22,12 +22,13 @@
   background-color: #344154;
   border-radius: 0.5em;
 
-  & > .input {
+  position: relative;
 
-  }
-
-  & > .button {
-
+  & > .spinner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1rem;
   }
 }
 

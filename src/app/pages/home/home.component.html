@@ -1,5 +1,8 @@
 <h1>Send Data to Database</h1>
 <form class="form" (submit)="onFormSubmit($event)">
+    @if (isLoading) {
+        <spinner-widget class="spinner" />
+    }
     <div class="input">
         <label>
             <div>QR Text</div>

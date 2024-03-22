@@ -1,5 +1,8 @@
 <h1>Register Form</h1>
 <form class="register-form" (submit)="onFormSubmit($event)">
+    @if (isLoading) {
+        <spinner-widget class="spinner" />
+    }
     <div class="input">
         <label>
             <div>Email</div>
@@ -18,5 +21,5 @@
         <br>
         <a routerLink="/login">Log In</a>
     </span>
-    <google-log-in role="button" tabindex="0" (success)="onGoogleSignUpSuccess()" (error)="onGoogleSignUpError($event)">Sign Up with Google</google-log-in>
+    <google-log-in role="button" tabindex="0" (click)="onGoogleSignUpStart()" (success)="onGoogleSignUpSuccess()" (error)="onGoogleSignUpError($event)">Sign Up with Google</google-log-in>
 </form>
