@@ -1,0 +1,74 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  
+  & > .table {
+    margin: auto;
+    height: 150px;
+  }
+
+  & > .link {
+    align-self: flex-end;
+  }
+}
+
+
+.link {
+  padding: 0.6rem;
+
+  background-color: #3d3d3d;
+  border-radius: 0.4rem;
+  box-shadow:
+    0 0 5px 1px #fff7,
+    0 0 1px 1px #0005 inset
+  ;
+}
+
+.table {
+  background-color: #2c5ba2;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 2px 1px #fff9 inset;
+  border-spacing: 0 0.7rem;
+
+  padding: 0.5rem;
+
+  & > :is(thead, tbody) > tr {
+
+    & > :is(th, td) {
+      text-align: start;
+      padding: 0.7rem;
+
+      &:first-child {
+        border-top-left-radius: 0.3rem;
+        border-bottom-left-radius: 0.3rem;
+      }
+
+      &:last-child {
+        border-top-right-radius: 0.3rem;
+        border-bottom-right-radius: 0.3rem;
+      }
+    }
+  }
+
+  & > thead > tr {
+    background-color: #22355a;
+  }
+
+  & > tbody > tr {
+    background-color: #4a8ed7;
+  }
+}
+
+.table {
+
+  & > tbody {
+    position: relative;
+
+    & > .spinner {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+    }
+  }
+}

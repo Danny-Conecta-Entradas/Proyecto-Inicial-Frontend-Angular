@@ -1,1 +1,27 @@
-<p>data-list works!</p>
+<h1>Data List</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th [style]="{width: '8rem'}">TimeStamp</th>
+            <th [style]="{width: '8rem'}">Name</th>
+            <th [style]="{width: '8rem'}">DNI</th>
+            <th [style]="{width: '8rem'}">Birth Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (item of listData; track item.timestamp) {
+            <tr>
+                <td>{{item.timestamp}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.dni}}</td>
+                <td>{{item.birth_date}}</td>
+            </tr>
+        }
+        @empty {
+            <spinner-widget class="spinner" />
+        }
+    </tbody>
+</table>
+<div class="link">
+    <a routerLink="/home">Go to Home</a>
+</div>

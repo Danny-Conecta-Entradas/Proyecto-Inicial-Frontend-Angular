@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 import AuthService from '../../services/auth.service.js'
-import { Router } from '@angular/router'
+import { Router, RouterModule } from '@angular/router'
 import { SpinnerComponent } from '../../components/spinner/spinner.component.js'
 import APIService, { APIModel } from '../../services/api.service.js'
 
 @Component({
   selector: 'app-home[data-page-component]',
   standalone: true,
-  imports: [SpinnerComponent],
+  imports: [SpinnerComponent, RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
