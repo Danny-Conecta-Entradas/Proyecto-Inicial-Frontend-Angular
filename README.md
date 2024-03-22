@@ -5,7 +5,7 @@
 npm run dev
 ```
 
-## Build and serve with Python server
+## Build and serve with Python FastAPI server
 ```console
 npm run start
 ```
