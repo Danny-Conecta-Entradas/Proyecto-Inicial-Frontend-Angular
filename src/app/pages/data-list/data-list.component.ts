@@ -14,10 +14,14 @@ export class DataListComponent implements OnInit {
 
   private _apiService = inject(APIService)
 
-  listData: APIModel[] = []
+  listData: APIModel[] | null = null
 
   async ngOnInit() {
     this.listData = await this._apiService.getAllData()
+  }
+
+  getDateValue(dateString: string) {
+    return new Date(dateString).getTime()
   }
 
 }
