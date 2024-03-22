@@ -56,7 +56,14 @@
   }
 
   & > tbody > tr {
-    background-color: #4a8ed7;
+
+    &:nth-child(2n + 1) {
+      background-color: #4a8ed7;
+    }
+
+    &:nth-child(2n) {
+      background-color: #8366d4;
+    }
   }
 }
 
