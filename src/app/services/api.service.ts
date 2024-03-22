@@ -13,6 +13,8 @@ export interface APIModel {
 })
 export default class APIService {
 
+  readonly API_ORIGIN_DEV = 'http://127.0.0.1:8080/'
+
   readonly API_ORIGIN = 'https://proyecto-inicial-backend-agk6kyxhfa-uc.a.run.app/'
 
   async sendData(data: APIModel): Promise<unknown> {

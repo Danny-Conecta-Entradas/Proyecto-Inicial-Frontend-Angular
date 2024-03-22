@@ -40,6 +40,9 @@ export class HomeComponent {
 
     const formData = Object.fromEntries(new FormData(form)) as unknown as Omit<APIModel, 'timestamp'>
 
+    // Transform date string from `<form>` to number
+    formData.birth_date = new Date(formData.birth_date).getTime()
+
     const resultData: APIModel = {...formData, timestamp: Date.now()}
 
     console.log(resultData)
