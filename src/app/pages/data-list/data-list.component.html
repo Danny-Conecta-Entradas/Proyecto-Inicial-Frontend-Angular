@@ -13,7 +13,7 @@
             <spinner-widget class="spinner" />
         }
         @else {
-            @for (item of listData; track getDateValue(item.creation_date)) {
+            @for (item of listData; track item) {
                 <tr>
                     <td>{{item.creation_date}}</td>
                     <td>{{item.name}}</td>

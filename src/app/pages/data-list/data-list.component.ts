@@ -20,8 +20,4 @@ export class DataListComponent implements OnInit {
     this.listData = await this._apiService.getAllData()
   }
 
-  getDateValue(dateString: string) {
-    return new Date(dateString).getTime()
-  }
-
 }
