@@ -1,5 +1,16 @@
 # ProyectoInicialFrontendAngular
 
+## Start dev Angular server
+```console
+npm run dev
+```
+
+## Build and serve with Python server
+```console
+npm run start
+```
+
+
 ## Some of the resources used
 
 https://www.youtube.com/watch?v=Vo8-d2f2dTg&ab_channel=CarlosMorales  
@@ -11,14 +22,3 @@ https://firebase.google.com/docs/auth/web/google-signin
 https://angular.io/guide/content-projection  
 https://angular.io/api/core/HostListener  
 https://angular.io/api/core/EventEmitter
-
-
-## Start dev Angular server
-```console
-npm run dev
-```
-
-## Build and serve with Python server
-```console
-npm run start
-```
