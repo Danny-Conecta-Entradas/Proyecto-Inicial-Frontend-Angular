@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core'
 
 
 export interface APIModel {
-  timestamp: number
+  creation_date: string
   name: string
   dni: string
-  birth_date: number
+  birth_date: string
 }
 
 @Injectable({

@@ -38,12 +38,13 @@ export class HomeComponent {
       return
     }
 
-    const formData = Object.fromEntries(new FormData(form)) as unknown as Omit<APIModel, 'timestamp'>
+    const formData = Object.fromEntries(new FormData(form)) as unknown as Omit<APIModel, 'creation_date'>
 
-    // Transform date string from `<form>` to number
-    formData.birth_date = new Date(formData.birth_date).getTime()
+    const currentDate = new Date()
 
-    const resultData: APIModel = {...formData, timestamp: Date.now()}
+    const creation_date = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`
+
+    const resultData: APIModel = {...formData, creation_date}
 
     console.log(resultData)
 
