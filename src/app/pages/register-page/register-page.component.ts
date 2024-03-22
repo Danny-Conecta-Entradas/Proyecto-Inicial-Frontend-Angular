@@ -1,6 +1,7 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import AuthService from '../../services/auth.service.js'
 import { Router, RouterModule } from '@angular/router'
+import { FirebaseError } from 'firebase/app'
 
 interface RegisterFormData {
   email: string
@@ -31,10 +32,10 @@ export class RegisterPageComponent {
 
     const { email, password } = Object.fromEntries(new FormData(form)) as unknown as RegisterFormData
 
-    const userCredentials = await this._authService.signUp(email, password).catch((reason: any) => new Error(reason))
+    const userCredentials = await this._authService.signUp(email, password).catch((reason: FirebaseError) => reason)
 
-    if (userCredentials instanceof Error) {
-      console.error(userCredentials)
+    if (userCredentials instanceof FirebaseError) {
+      console.warn(userCredentials)
       alert(`No se ha podido registrar la cuenta. Error: ${userCredentials.message}`)
       return
     }
