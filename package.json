@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npm run build && npm run python-server",
+    "dev": "ng serve",
     "build": "ng build --output-path=\"./dist/\"",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "python-dev-server": "uvicorn back_end.src.main:app --port=8080 --reload"
+    "python-dev-server": "uvicorn back_end.src.main:app --port=8080 --reload",
+    "python-server": "uvicorn back_end.src.main:app --port=9090"
   },
   "private": true,
   "dependencies": {
