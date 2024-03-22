@@ -23,3 +23,4 @@ https://angular.io/guide/content-projection
 https://angular.io/api/core/HostListener  
 https://angular.io/api/core/EventEmitter  
 https://angular.io/api/core/if  
+https://angular.io/api/core/for  
