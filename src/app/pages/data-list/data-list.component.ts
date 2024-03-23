@@ -16,14 +16,6 @@ export class DataListComponent implements OnInit {
 
   listData: APIModel[] | Error | null = null
 
-  isError(error: unknown): error is Error {
-    if (error == null) {
-      return false
-    }
-
-    return error instanceof Error
-  }
-
   async ngOnInit() {
     try {
       this.listData = await this._apiService.getAllData()
@@ -31,5 +23,13 @@ export class DataListComponent implements OnInit {
       this.listData = reason as Error
     }
   }
+
+  isError(error: unknown): error is Error {
+    if (error == null) {
+      return false
+    }
+
+    return error instanceof Error
+  }  
 
 }
