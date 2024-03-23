@@ -2,7 +2,11 @@
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  
+
+  & > .header {
+    align-self: center;
+  }
+
   & > .table {
     margin: auto;
     height: 150px;
@@ -13,6 +17,12 @@
   }
 }
 
+.header {
+  background-color: #60f;
+  padding: 1rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
 
 .link {
   padding: 0.6rem;

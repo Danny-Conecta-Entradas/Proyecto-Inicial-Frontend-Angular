@@ -3,6 +3,10 @@
   flex-direction: column;
   padding: 1rem;
 
+  & > .header {
+    align-self: center;
+  }
+
   & > .register-form {
     width: 100%;
     max-width: 400px;
@@ -11,6 +15,12 @@
   }
 }
 
+.header {
+  background-color: #60f;
+  padding: 1rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
 
 .register-form {
   display: flex;
