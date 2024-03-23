@@ -1,0 +1,27 @@
+<thead>
+    <tr>
+        @for (column of displayedColumns; track column) {
+            <th [style]="{width: column.width}">{{column.name}}</th>
+        }
+    </tr>
+</thead>
+<tbody>
+    @if (items == null) {
+        <spinner-widget class="spinner" />
+    }
+    @else if (isError(items)) {
+        <div class="message -error">An error happened while fetching the data</div>
+    }
+    @else {
+        @for (item of items; track item) {
+            <tr>
+                @for (value of getItemValues(item); track value) {
+                    <td>{{value}}</td>
+                }
+            </tr>
+        }
+        @empty {
+            <div class="message">List is empty</div>
+        }
+    }
+</tbody>

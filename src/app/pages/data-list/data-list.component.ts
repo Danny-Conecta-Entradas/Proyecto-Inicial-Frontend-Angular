@@ -2,11 +2,13 @@ import { Component, OnInit, inject } from '@angular/core';
 import { RouterModule } from '@angular/router'
 import APIService, { APIModel } from '../../services/api.service.js'
 import { SpinnerComponent } from '../../components/spinner/spinner.component.js'
+import { InputComponent } from '../../components/input/input.component.js'
+import { TableComponent } from '../../components/table/table.component.js'
 
 @Component({
   selector: 'app-data-list[data-page-component]',
   standalone: true,
-  imports: [RouterModule, SpinnerComponent],
+  imports: [RouterModule, SpinnerComponent, InputComponent, TableComponent],
   templateUrl: './data-list.component.html',
   styleUrl: './data-list.component.css',
 })

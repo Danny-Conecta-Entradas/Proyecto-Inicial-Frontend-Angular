@@ -1,34 +1,13 @@
 <h1 class="header">Data List</h1>
-<table class="table">
-    <thead>
-        <tr>
-            <th [style]="{width: '10rem'}">Creation Date</th>
-            <th [style]="{width: '10rem'}">Name</th>
-            <th [style]="{width: '10rem'}">DNI</th>
-            <th [style]="{width: '10rem'}">Birth Date</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (listData == null) {
-            <spinner-widget class="spinner" />
-        }
-        @else if (isError(listData)) {
-            <div class="message -error">An error happened while fetching the data</div>
-        }
-        @else {
-            @for (item of listData; track item) {
-                <tr>
-                    <td>{{item.creation_date}}</td>
-                    <td>{{item.name}}</td>
-                    <td>{{item.dni}}</td>
-                    <td>{{item.birth_date}}</td>
-                </tr>
-            }
-            @empty {
-                <div class="message">List is empty</div>
-            }
-        }
-    </tbody>
+<table table-component class="table"
+    [displayedColumns]="[
+        {width: '10rem', name: 'Creation Date', keyName: 'creation_date'},
+        {width: '10rem', name: 'Name', keyName: 'name'},
+        {width: '10rem', name: 'DNI', keyName: 'dni'},
+        {width: '10rem', name: 'Birth Date', keyName: 'birth_date'},
+    ]"
+    [items]="listData"
+>
 </table>
 <div class="link">
     <a routerLink="/home">Go to Home</a>
