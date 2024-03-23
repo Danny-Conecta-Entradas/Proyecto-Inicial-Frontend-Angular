@@ -12,6 +12,9 @@
         @if (listData == null) {
             <spinner-widget class="spinner" />
         }
+        @else if (isError(listData)) {
+            <div class="message -error">An error happened while fetching the data</div>
+        }
         @else {
             @for (item of listData; track item) {
                 <tr>
@@ -22,7 +25,7 @@
                 </tr>
             }
             @empty {
-                <div class="emptylist-message">List is empty</div>
+                <div class="message">List is empty</div>
             }
         }
     </tbody>

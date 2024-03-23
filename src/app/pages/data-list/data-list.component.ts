@@ -14,10 +14,23 @@ export class DataListComponent implements OnInit {
 
   private _apiService = inject(APIService)
 
-  listData: APIModel[] | null = null
+  listData: APIModel[] | Error | null = null
+
+  isError(error: unknown): error is Error {
+    if (error == null) {
+      return false
+    }
+
+    return error instanceof Error
+  }
 
   async ngOnInit() {
-    this.listData = await this._apiService.getAllData()
+    try {
+      throw new Error('')
+      this.listData = await this._apiService.getAllData()
+    } catch (reason) {
+      this.listData = reason as Error
+    }
   }
 
 }

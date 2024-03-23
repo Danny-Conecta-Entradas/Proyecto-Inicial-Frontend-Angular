@@ -78,13 +78,18 @@
       margin: auto;
     }
 
-    & > .emptylist-message {
+    & > .message {
       position: absolute;
       inset: 0;
       margin: auto;
 
       display: grid;
       place-items: center;
+
+      &.-error {
+        color: #fc1f1f;
+        font-weight: bold;
+      }
     }
   }
 }
