@@ -30,6 +30,6 @@ export class DataListComponent implements OnInit {
     }
 
     return error instanceof Error
-  }  
+  }
 
 }
