@@ -3,24 +3,9 @@
     @if (isLoading) {
         <spinner-widget class="spinner" />
     }
-    <div class="input">
-        <label>
-            <div>Name</div>
-            <input type="text" name="name">
-        </label>
-    </div>
-    <div class="input">
-        <label>
-            <div>DNI</div>
-            <input type="text" name="dni">
-        </label>
-    </div>
-    <div class="input">
-        <label>
-            <div>Birth Date</div>
-            <input type="date" name="birth_date">
-        </label>
-    </div>
+    <label-input label="Name" type="text" name="name" />
+    <label-input label="DNI" type="text" name="dni" />
+    <label-input label="Birth Date" type="date" name="birth_date" />
     <button class="button" type="submit">Send Data</button>
     <div class="info">
         Do you want to log out?

@@ -3,18 +3,8 @@
     @if (isLoading) {
         <spinner-widget class="spinner" />
     }
-    <div class="input">
-        <label>
-            <div>Email</div>
-            <input type="email" name="email">
-        </label>
-    </div>
-    <div class="input">
-        <label>
-            <div>Password</div>
-            <input type="password" name="password">
-        </label>
-    </div>
+    <label-input label="Email" type="email" name="email" />
+    <label-input label="Password" type="password" name="password" />
     <button class="button" type="submit">Sign Up</button>
     <span class="info">
         Already have an account?
