@@ -26,7 +26,6 @@ export class DataListComponent implements OnInit {
 
   async ngOnInit() {
     try {
-      throw new Error('')
       this.listData = await this._apiService.getAllData()
     } catch (reason) {
       this.listData = reason as Error
