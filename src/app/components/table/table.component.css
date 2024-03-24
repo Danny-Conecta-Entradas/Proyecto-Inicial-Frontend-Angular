@@ -36,7 +36,7 @@
     }
 
     &:nth-child(2n) {
-      background-color: #dd3eb4;
+      background-color: #2ccaa0;
     }
   }
 }
