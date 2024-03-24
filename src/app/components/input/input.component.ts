@@ -18,4 +18,7 @@ export class InputComponent {
   @Input()
   name: string = ''
 
+  @Input()
+  placeholder: string = ''
+
 }

@@ -20,6 +20,10 @@
       &:focus-visible {
         background-color: #0a4d75;
       }
+
+      &::placeholder {
+        color: #ddd;
+      }
     }
   }
 }
