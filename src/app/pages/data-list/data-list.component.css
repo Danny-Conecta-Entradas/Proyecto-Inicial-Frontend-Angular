@@ -7,9 +7,12 @@
     align-self: center;
   }
 
-  & > .table {
+  & > .table-block {
     margin: auto;
-    height: 150px;
+
+    & > .table {
+      height: 150px;
+    }
   }
 
   & > .link {
@@ -22,6 +25,17 @@
   padding: 1rem;
   border-top-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
+}
+
+.table-block {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #212844;
+  border: solid 2px #446383;
 }
 
 .link {
