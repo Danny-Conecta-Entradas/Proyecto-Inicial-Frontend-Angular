@@ -1,6 +1,7 @@
 :host {
   display: flex;
   flex-direction: column;
+  row-gap: 1rem;
   padding: 1rem;
 
   & > .header {
@@ -77,12 +78,6 @@
   &:active {
     background-color: #087a58;
   }
-
-  /* @media (hover: none) {
-    &:active {
-      background-color: #087a58;
-    }
-  } */
 
   &.-log-out {
     background-color: #b32a2a;
