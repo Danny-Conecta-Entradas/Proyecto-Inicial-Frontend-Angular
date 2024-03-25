@@ -1,7 +1,7 @@
 <h1 class="header">Data List</h1>
 <div class="table-block">
     <div class="options">
-        <label-input label="Filter" [(value)]="filterValue" placeholder="Type here any text to find rows that match" />
+        <label-input label="Filter" [(value)]="filterValue" placeholder="Type here any text to find rows that match" (input)="onFilterValueChange()" />
     </div>
     <table table-component class="table"
         [displayedColumns]="[

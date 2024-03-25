@@ -17,38 +17,36 @@ export class DataListComponent implements OnInit {
 
   private _apiService = inject(APIService)
 
-  fetchedListData: APIModel[] | Error | null = null
-
-  get listData() {
-    if (this.fetchedListData == null || this.fetchedListData instanceof Error) {
-      return this.fetchedListData
-    }
-
-    if (this.filterValue === '') {
-      return this.fetchedListData
-    }
-
-    const filteredList = this.fetchedListData.filter(item => {
-      const values: unknown[] = Object.values(item)
-
-      return values.some(value => {
-        const stringValue = String(value).toLowerCase()
-
-        return stringValue.includes(this.filterValue.toLowerCase())
-      })
-    })
-
-    return filteredList
-  }
+  listData: APIModel[] | Error | null = null
 
   filterValue = ''
 
+  private _fetchDelay = 500
+
+  private _fetchTimeout: number = -1
+
+  onFilterValueChange() {
+    window.clearTimeout(this._fetchTimeout)
+
+    this._fetchTimeout = window.setTimeout(async () => {
+      await this.fetchData()
+    }, this._fetchDelay)
+  }
+
   async ngOnInit() {
+    await this.fetchData()
+  }
+
+  async fetchData() {
+    this.listData = null
+
     try {
-      this.fetchedListData = await this._apiService.getAllData()
+      this.listData = await this._apiService.getAllData(this.filterValue)
     } catch (reason) {
-      this.fetchedListData = reason as Error
+      this.listData = reason as Error
     }
+
+    console.log({fetchedData: this.listData})
   }
 
   isError(error: unknown): error is Error {

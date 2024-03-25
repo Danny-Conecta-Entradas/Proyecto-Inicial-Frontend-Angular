@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 
 
 export interface APIModel {
+  _key?: number
   creation_date: string
   name: string
   dni: string
@@ -37,8 +38,13 @@ export default class APIService {
     return await response.json()
   }
 
-  async getAllData() {
-    const endpoint = new URL('/api/get-all-data/', this.API_ORIGIN)
+  async getAllData(filter?: string) {
+    const url = new URL(`/api/get-all-data/`, this.API_ORIGIN)
+    if (filter) {
+      url.searchParams.set('filter', filter)
+    }
+
+    const endpoint = url
 
     const response = await fetch(endpoint)
 
