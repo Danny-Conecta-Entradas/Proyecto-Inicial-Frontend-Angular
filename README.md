@@ -26,3 +26,4 @@ https://angular.io/api/core/if
 https://angular.io/api/core/for  
 https://angular.io/guide/inputs-outputs  
 https://blog.thoughtram.io/angular/2016/10/13/two-way-data-binding-in-angular-2.html  
+https://stackoverflow.com/questions/60375207/when-use-name-vs-attr-name  

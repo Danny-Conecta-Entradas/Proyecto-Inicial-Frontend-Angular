@@ -1,4 +1,4 @@
 <label>
     <div>{{label}}</div>
-    <input [type]="type" [name]="name" [placeholder]="placeholder" [(ngModel)]="value">
+    <input [attr.type]="type || null" [attr.name]="name || null" [attr.placeholder]="placeholder || null" [(ngModel)]="value">
 </label>
