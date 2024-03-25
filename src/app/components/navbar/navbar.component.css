@@ -6,14 +6,16 @@
   padding-block: 1rem;
   padding-inline: 1.5rem;
 
-  color: #fff;
-
   background-color: #00526d;
 
   & > .links {
     display: flex;
     align-items: center;
     column-gap: 1.5rem;
+
+    & > a {
+      color: #fff;
+    }
   }
 
   & > .user-section {
