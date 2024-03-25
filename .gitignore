@@ -2,7 +2,6 @@
 
 __pycache__
 
-/src/environments/*
 
 # Compiled output
 /dist
