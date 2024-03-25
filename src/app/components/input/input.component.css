@@ -24,6 +24,24 @@
       &::placeholder {
         color: #ddd;
       }
+
+      /* Trick to be able to set custom `background-color` on `input:autofill` */
+      &:autofill {
+        --box-shadow-autofill-bg: 0 0 0 100px var(--background-color) inset;
+        --box-shadow: 0 0;
+        box-shadow:
+          var(--box-shadow),
+          var(--box-shadow-autofill-bg)
+        ;
+      }
+
+      &:autofill {
+        --background-color: #008763;
+
+        &:focus-visible {
+          --background-color: #015f46;
+        }
+      }
     }
   }
 }
