@@ -1,0 +1,62 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-block: 1rem;
+  padding-inline: 1.5rem;
+
+  color: #fff;
+
+  background-color: #00526d;
+
+  & > .links {
+    display: flex;
+    align-items: center;
+    column-gap: 1.5rem;
+  }
+
+  & > .user-section {
+    display: flex;
+    align-items: center;
+    column-gap: 1.5rem;
+  }
+}
+
+.button {
+  padding: 0.5em;
+  border-radius: 0.4em;
+  background-color: #00a473;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: #2bdca7;
+    }
+  }
+
+  &:focus-visible {
+    background-color: #2bdca7;
+  }
+
+  &:active {
+    background-color: #087a58;
+  }
+
+  &.-log-out {
+    background-color: #b32a2a;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: #eb4848;
+      }
+    }
+
+    &:focus-visible {
+      background-color: #eb4848;
+    }
+
+    &:active {
+      background-color: #8b0f0f;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core'
 import { Auth, GoogleAuthProvider, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from '@angular/fire/auth'
 import firebase from '@firebase/app-compat'
-import { firstValueFrom } from 'rxjs'
+import { firstValueFrom, map } from 'rxjs'
 
 
 @Injectable({
@@ -45,10 +45,16 @@ export default class AuthService {
     return userData
   }
 
-  async isUserLogged() {
-    const userData = await this.getLoggedUserData()
+  // async isUserLogged() {
+  //   const userData = await this.getLoggedUserData()
 
-    return Boolean(userData)
+  //   return Boolean(userData)
+  // }
+
+  isUserLogged() {
+    return this.authState.pipe(
+      map(user => Boolean(user))
+    )
   }
 
   async updateUserProfile(name: string, photo: string): Promise<boolean> {

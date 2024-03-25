@@ -1,6 +1,4 @@
 import { Component, inject } from '@angular/core';
-import AuthService from '../../services/auth.service.js'
-import { Router, RouterModule } from '@angular/router'
 import { SpinnerComponent } from '../../components/spinner/spinner.component.js'
 import APIService, { APIModel } from '../../services/api.service.js'
 import { InputComponent } from '../../components/input/input.component.js'
@@ -8,27 +6,15 @@ import { InputComponent } from '../../components/input/input.component.js'
 @Component({
   selector: 'app-home[data-page-component]',
   standalone: true,
-  imports: [SpinnerComponent, RouterModule, InputComponent],
+  imports: [SpinnerComponent, InputComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
 
-  private _authService = inject(AuthService)
-
-  private _router = inject(Router)
-
   private _apiService = inject(APIService)
 
   isLoading = false
-
-  async logOut() {
-    this.isLoading = true
-    await this._authService.logOut()
-    this.isLoading = false
-
-    this._router.navigateByUrl('/')
-  }
 
   onFormSubmit(event: SubmitEvent) {
     event.preventDefault()

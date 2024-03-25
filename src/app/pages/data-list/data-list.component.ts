@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms'
 @Component({
   selector: 'app-data-list[data-page-component]',
   standalone: true,
-  imports: [RouterModule, SpinnerComponent, InputComponent, TableComponent, FormsModule],
+  imports: [SpinnerComponent, InputComponent, TableComponent, FormsModule],
   templateUrl: './data-list.component.html',
   styleUrl: './data-list.component.css',
 })

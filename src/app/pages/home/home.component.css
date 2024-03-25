@@ -78,24 +78,6 @@
   &:active {
     background-color: #087a58;
   }
-
-  &.-log-out {
-    background-color: #b32a2a;
-
-    @media (hover: hover) {
-      &:hover {
-        background-color: #eb4848;
-      }
-    }
-
-    &:focus-visible {
-      background-color: #eb4848;
-    }
-
-    &:active {
-      background-color: #8b0f0f;
-    }
-  }
 }
 
 .info {
