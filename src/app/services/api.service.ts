@@ -30,6 +30,10 @@ export default class APIService {
       },
     })
 
+    if (response.status !== 200) {
+      throw new Error(`Request rejected with status code ${response.status}`)
+    }
+
     return await response.json()
   }
 
@@ -37,6 +41,10 @@ export default class APIService {
     const endpoint = new URL('/api/get-all-data/', this.API_ORIGIN)
 
     const response = await fetch(endpoint)
+
+    if (response.status !== 200) {
+      throw new Error(`Request rejected with status code ${response.status}`)
+    }
 
     const items = await response.json() as APIModel[]
 
