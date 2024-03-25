@@ -1,6 +1,6 @@
 <thead>
     <tr>
-        @for (column of displayedColumns; track column) {
+        @for (column of displayedColumns; track $index) {
             <th [style]="{width: column.width}">{{column.name}}</th>
         }
     </tr>
@@ -13,9 +13,9 @@
         <div class="message -error">An error happened while fetching the data</div>
     }
     @else {
-        @for (item of items; track item) {
+        @for (item of items; track track ? item[track] : item) {
             <tr>
-                @for (value of getItemValues(item); track value) {
+                @for (value of getItemValues(item); track $index) {
                     <td>{{value}}</td>
                 }
             </tr>

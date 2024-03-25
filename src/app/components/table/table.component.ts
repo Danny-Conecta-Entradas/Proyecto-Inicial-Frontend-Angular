@@ -27,6 +27,9 @@ export class TableComponent implements OnChanges {
   @Input()
   displayedColumns: TableColumn[] = []
 
+  @Input()
+  track?: string
+
   ngOnChanges(changes: SimpleChanges) {
     if (this.displayedColumns.length === 0) {
       this.displayedColumns = this.getDefaultColumns()
