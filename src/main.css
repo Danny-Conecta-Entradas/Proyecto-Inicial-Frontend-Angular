@@ -21,7 +21,8 @@ app-root {
 }
 
 ::selection {
-  background-color: #8c8c8ca1;
+  color: #fff;
+  background-color: #00b96c;
 }
 
 a {
