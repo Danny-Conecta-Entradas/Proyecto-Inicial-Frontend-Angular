@@ -29,7 +29,10 @@ export class HomeComponent {
 
     const currentDate = new Date()
 
-    const creation_date = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`
+    const year = currentDate.getFullYear()
+    const month = (currentDate.getMonth() + 1).toString().padStart(2, '0')
+    const day = currentDate.getDate()
+    const creation_date = `${year}-${month}-${day}`
 
     const resultData: APIModel = {...formData, creation_date}
 
