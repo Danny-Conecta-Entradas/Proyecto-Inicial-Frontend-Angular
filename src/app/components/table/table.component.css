@@ -1,5 +1,6 @@
 :host {
   background-color: #2c5ba2;
+  background-color: #3e75c8;
   border-radius: 0.5rem;
   box-shadow: 0 0 2px 1px #fff9 inset;
   border-spacing: 2px 0.7rem;
@@ -26,18 +27,20 @@
   }
 
   & > thead > tr {
-    background-color: #22355a;
+    background-color: #171f2e;
   }
 
   & > tbody > tr {
 
-    &:nth-child(2n + 1) {
+    background-color: #003f6d;
+
+    /* &:nth-child(2n + 1) {
       background-color: #67a6ea;
     }
 
     &:nth-child(2n) {
       background-color: #2ccaa0;
-    }
+    } */
   }
 }
 
