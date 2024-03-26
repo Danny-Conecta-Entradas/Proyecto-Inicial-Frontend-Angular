@@ -4,7 +4,7 @@ import { Router, RouterModule } from '@angular/router'
 import { FirebaseError } from 'firebase/app'
 import { GoogleLogInComponent } from '../../components/google-log-in/google-log-in.component.js'
 import { SpinnerComponent } from '../../components/spinner/spinner.component.js'
-import { InputComponent } from '../../components/input/input.component.js'
+import { LabelInputComponent } from '../../components/label-input/label-input.component.js'
 
 interface LoginFormData {
   email: string
@@ -15,7 +15,7 @@ interface LoginFormData {
 @Component({
   selector: 'app-login-page[data-page-component]',
   standalone: true,
-  imports: [RouterModule, GoogleLogInComponent, SpinnerComponent, InputComponent],
+  imports: [RouterModule, GoogleLogInComponent, SpinnerComponent, LabelInputComponent],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
 })

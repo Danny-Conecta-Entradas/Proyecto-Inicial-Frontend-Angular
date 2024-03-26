@@ -5,10 +5,10 @@ import { FormsModule } from '@angular/forms'
   selector: 'label-input',
   standalone: true,
   imports: [FormsModule],
-  templateUrl: './input.component.html',
-  styleUrl: './input.component.css',
+  templateUrl: './label-input.component.html',
+  styleUrl: './label-input.component.css',
 })
-export class InputComponent {
+export class LabelInputComponent {
 
   @Input()
   label: string = 'Unnamed Label'

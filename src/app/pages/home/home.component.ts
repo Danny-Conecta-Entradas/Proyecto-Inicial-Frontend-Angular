@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { SpinnerComponent } from '../../components/spinner/spinner.component.js'
 import APIService, { APIModel } from '../../services/api.service.js'
-import { InputComponent } from '../../components/input/input.component.js'
+import { LabelInputComponent } from '../../components/label-input/label-input.component.js'
 
 @Component({
   selector: 'app-home[data-page-component]',
   standalone: true,
-  imports: [SpinnerComponent, InputComponent],
+  imports: [SpinnerComponent, LabelInputComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

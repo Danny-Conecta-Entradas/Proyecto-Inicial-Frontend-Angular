@@ -1,20 +1,24 @@
 import { Component, OnInit, inject } from '@angular/core';
 import APIService, { APIModel } from '../../services/api.service.js'
 import { SpinnerComponent } from '../../components/spinner/spinner.component.js'
-import { InputComponent } from '../../components/input/input.component.js'
+import { LabelInputComponent } from '../../components/label-input/label-input.component.js'
 import { TableComponent } from '../../components/table/table.component.js'
 import { FormsModule } from '@angular/forms'
+import ModalService from '../../services/modal.service.js'
+import { HomeComponent } from '../home/home.component.js'
 
 @Component({
   selector: 'app-data-list[data-page-component]',
   standalone: true,
-  imports: [SpinnerComponent, InputComponent, TableComponent, FormsModule],
+  imports: [SpinnerComponent, LabelInputComponent, TableComponent, FormsModule],
   templateUrl: './data-list.component.html',
   styleUrl: './data-list.component.css',
 })
 export class DataListComponent implements OnInit {
 
   private _apiService = inject(APIService)
+
+  private _modalService = inject(ModalService)
 
   listData: APIModel[] | Error | null = null
 
@@ -33,6 +37,7 @@ export class DataListComponent implements OnInit {
   }
 
   async ngOnInit() {
+    this._modalService.open(HomeComponent)
     await this.fetchData()
   }
 
