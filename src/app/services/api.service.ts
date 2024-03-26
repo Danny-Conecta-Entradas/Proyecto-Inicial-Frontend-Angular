@@ -54,4 +54,25 @@ export default class APIService {
     return items
   }
 
+  async editData(data: APIModel) {
+    const key = data._key as number
+    const endpoint = new URL(`/api/edit-data/${key}`, environment.apiURL)
+
+    const stringifiedData = JSON.stringify(data)
+
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      body: stringifiedData,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+
+    if (response.status !== 200) {
+      throw new Error(`Request rejected with status code ${response.status}`)
+    }
+
+    return await response.json()
+  }
+
 }
