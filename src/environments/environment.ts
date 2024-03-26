@@ -14,5 +14,6 @@ const firebaseConfig = {
 
 export const environment = {
   production: true,
+  apiURL: 'https://proyecto-inicial-backend-agk6kyxhfa-uc.a.run.app/',
   firebaseConfig,
 }

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core'
+import { environment } from '../../environments/environment'
 
 
 export interface APIModel {
@@ -14,12 +15,8 @@ export interface APIModel {
 })
 export default class APIService {
 
-  readonly API_ORIGIN_DEV = 'http://127.0.0.1:8080/'
-
-  readonly API_ORIGIN = 'https://proyecto-inicial-backend-agk6kyxhfa-uc.a.run.app/'
-
   async sendData(data: APIModel): Promise<unknown> {
-    const endpoint = new URL('/api/send-data/', this.API_ORIGIN)
+    const endpoint = new URL('/api/send-data/', environment.apiURL)
 
     const stringifiedData = JSON.stringify(data)
 
@@ -39,7 +36,7 @@ export default class APIService {
   }
 
   async getAllData(filter?: string) {
-    const url = new URL(`/api/get-all-data/`, this.API_ORIGIN)
+    const url = new URL(`/api/get-all-data/`, environment.apiURL)
     if (filter) {
       url.searchParams.set('filter', filter)
     }
