@@ -29,3 +29,4 @@ https://blog.thoughtram.io/angular/2016/10/13/two-way-data-binding-in-angular-2.
 https://stackoverflow.com/questions/60375207/when-use-name-vs-attr-name  
 https://stackoverflow.com/questions/36745734/how-to-add-conditional-attribute-in-angular-2  
 https://angular.io/guide/build  
+https://medium.com/@greenFlag/how-to-easily-and-quickly-create-a-modal-in-angular-a2f82d5c11f6
