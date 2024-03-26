@@ -71,8 +71,6 @@ export default class APIService {
     if (response.status !== 200) {
       throw new Error(`Request rejected with status code ${response.status}`)
     }
-
-    return await response.json()
   }
 
 }
