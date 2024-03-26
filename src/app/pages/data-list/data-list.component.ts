@@ -1,5 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
-import { RouterModule } from '@angular/router'
+import { Component, OnInit, inject } from '@angular/core';
 import APIService, { APIModel } from '../../services/api.service.js'
 import { SpinnerComponent } from '../../components/spinner/spinner.component.js'
 import { InputComponent } from '../../components/input/input.component.js'
