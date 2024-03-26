@@ -71,3 +71,27 @@
     }
   }
 }
+
+
+.action {
+  padding: 0.6rem;
+  border-radius: 0.4rem;
+  padding: 0.6rem;
+  border-radius: 0.4rem;
+  background-color: #a9089e;
+  box-shadow: 2px 2px 4px 0px #0009;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: #d629ca;
+    }
+  }
+
+  &:focus-visible {
+    background-color: #d629ca;
+  }
+
+  &:active {
+    background-color: #7c0674;
+  }
+}

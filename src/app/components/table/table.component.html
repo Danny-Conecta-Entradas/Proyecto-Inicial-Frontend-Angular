@@ -3,6 +3,9 @@
         @for (column of displayedColumns; track $index) {
             <th [style]="{width: column.width}">{{column.name}}</th>
         }
+        @if (actions) {
+            <th [style.width]="actionsColumn?.width">{{actionsColumn?.name}}</th>
+        }
     </tr>
 </thead>
 <tbody>
@@ -12,16 +15,23 @@
     @else if (isError(items)) {
         <div class="message -error">An error happened while fetching the data</div>
     }
+    @else if (items.length === 0) {
+        <div class="message">List is empty</div>
+    }
     @else {
         @for (item of items; track track ? item[track] : item) {
             <tr>
                 @for (value of getItemValues(item); track $index) {
                     <td>{{value}}</td>
                 }
+                @if (actions) {
+                    <td>
+                        @for (action of actions; track $index) {
+                            <button class="action" (click)="action.callback(item)">{{action.name}}</button>
+                        }
+                    </td>
+                }
             </tr>
-        }
-        @empty {
-            <div class="message">List is empty</div>
         }
     }
 </tbody>

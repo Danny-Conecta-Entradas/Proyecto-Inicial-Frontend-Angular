@@ -11,6 +11,11 @@ interface TableColumn {
   width?: string
 }
 
+type Action = {
+  name: string
+  callback: (item: any) => void
+}
+
 @Component({
   selector: 'table[table-component]',
   standalone: true,
@@ -18,7 +23,6 @@ interface TableColumn {
   templateUrl: './table.component.html',
   styleUrl: './table.component.css'
 })
-
 export class TableComponent implements OnChanges {
 
   @Input()
@@ -29,6 +33,12 @@ export class TableComponent implements OnChanges {
 
   @Input()
   track?: string
+
+  @Input()
+  actionsColumn?: {name: string, width?: string} = {name: 'Actions'}
+
+  @Input()
+  actions?: Action[]
 
   ngOnChanges(changes: SimpleChanges) {
     if (this.displayedColumns.length === 0) {

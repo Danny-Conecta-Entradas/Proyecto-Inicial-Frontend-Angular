@@ -5,7 +5,7 @@ import { LabelInputComponent } from '../../components/label-input/label-input.co
 import { TableComponent } from '../../components/table/table.component.js'
 import { FormsModule } from '@angular/forms'
 import ModalService from '../../services/modal.service.js'
-import { HomeComponent } from '../home/home.component.js'
+import { EditDataComponent } from '../../components/edit-data/edit-data.component.js'
 
 @Component({
   selector: 'app-data-list[data-page-component]',
@@ -37,8 +37,19 @@ export class DataListComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this._modalService.open(HomeComponent)
     await this.fetchData()
+  }
+
+  async editData(item: APIModel) {
+    const component = this._modalService.open(EditDataComponent)
+
+    component.prefillData = item
+
+    await component.waitForResult()
+
+    this._modalService.close()
+
+    this.fetchData()
   }
 
   async fetchData() {

@@ -11,6 +11,11 @@
             {width: '10rem', name: 'Birth Date', keyName: 'birth_date'},
         ]"
         [items]="listData"
+
+        [actionsColumn]="{name: 'Actions'}"
+        [actions]="[
+            {name: 'Edit', callback: editData.bind(this)},
+        ]"
     >
     </table>
 </div>

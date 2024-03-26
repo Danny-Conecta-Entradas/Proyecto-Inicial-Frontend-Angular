@@ -1,0 +1,9 @@
+<form class="form" (submit)="onFormSubmit($event)">
+    @if (isLoading) {
+        <spinner-widget class="spinner" />
+    }
+    <label-input label="Name" type="text" name="name" [value]="prefillData.name" />
+    <label-input label="DNI" type="text" name="dni" [value]="prefillData.dni" />
+    <label-input label="Birth Date" type="date" name="birth_date" [value]="prefillData.birth_date" />
+    <button class="button" type="submit">Update Data</button>
+</form>

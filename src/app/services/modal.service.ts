@@ -12,7 +12,7 @@ export default class ModalService {
   private _modalComponentInstance: ComponentRef<ModalComponent> | null = null
 
   open<T>(ComponentClass: Type<T>) {
-    return this.openWithComponent(ComponentClass)
+    return this.openWithComponent(ComponentClass).instance
   }
 
   async waitForClose() {
@@ -65,7 +65,7 @@ export default class ModalService {
       inset: 0;
       margin: auto;
 
-      background-color: #0009;
+      background-color: #000b;
     }
 
     .close-button {

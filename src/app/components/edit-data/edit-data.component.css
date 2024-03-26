@@ -1,0 +1,42 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 1.5rem;
+
+  padding: 1rem;
+  padding-right: 5rem;
+
+  background-color: #344154;
+  border-radius: 0.5em;
+
+  position: relative;
+
+  & > .spinner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1rem;
+  }
+}
+
+
+.button {
+  padding: 0.5em;
+  border-radius: 0.4em;
+  background-color: #00a473;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: #2bdca7;
+    }
+  }
+
+  &:focus-visible {
+    background-color: #2bdca7;
+  }
+
+  &:active {
+    background-color: #087a58;
+  }
+}
