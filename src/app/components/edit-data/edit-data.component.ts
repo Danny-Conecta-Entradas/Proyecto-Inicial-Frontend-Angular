@@ -19,6 +19,10 @@ export class EditDataComponent {
   prefillData = {} as APIModel
 
   onFormSubmit(event: SubmitEvent) {
+    if (this.isLoading) {
+      return
+    }
+
     const form = event.target as HTMLFormElement | null
 
     if (!form) {

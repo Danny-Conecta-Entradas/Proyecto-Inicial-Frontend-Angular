@@ -17,6 +17,10 @@ export class HomeComponent {
   isLoading = false
 
   onFormSubmit(event: SubmitEvent) {
+    if (this.isLoading) {
+      return
+    }
+
     event.preventDefault()
 
     const form = event.target as HTMLFormElement | null

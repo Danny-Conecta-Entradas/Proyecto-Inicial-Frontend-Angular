@@ -8,6 +8,7 @@ export interface APIModel {
   name: string
   dni: string
   birth_date: string
+  photo_url: string
 }
 
 @Injectable({
@@ -18,14 +19,16 @@ export default class APIService {
   async sendData(data: APIModel): Promise<unknown> {
     const endpoint = new URL('/api/send-data/', environment.apiURL)
 
-    const stringifiedData = JSON.stringify(data)
+    const formData = new FormData()
+
+    for (const key in data) {
+      //@ts-ignore
+      formData.set(key, data[key])
+    }
 
     const response = await fetch(endpoint, {
       method: 'POST',
-      body: stringifiedData,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      body: formData,
     })
 
     if (response.status !== 200) {

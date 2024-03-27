@@ -27,6 +27,10 @@ export class RegisterPageComponent {
   isLoading = false
 
   async onFormSubmit(event: SubmitEvent): Promise<void> {
+    if (this.isLoading) {
+      return
+    }
+
     const form = event.target as HTMLFormElement | null
 
     if (!form) {
