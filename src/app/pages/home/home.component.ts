@@ -199,13 +199,17 @@ async function captureVideoScreenShotAsBlob(video: HTMLVideoElement): Promise<Bl
   ctx.drawImage(video, 0, 0)
 
   return new Promise((resolve, reject) => {
-    canvas.toBlob(blob => {
-      if (!blob) {
-        reject(new Error(`Canvas couldn't be read as Blob.`))
-        return
-      }
+    try {
+      canvas.toBlob(blob => {
+        if (!blob) {
+          reject(new Error(`Canvas couldn't be read as Blob.`))
+          return
+        }
 
-      resolve(blob)
-    })
+        resolve(blob)
+      })
+    } catch (reason) {
+      reject(reason)
+    }
   })
 }
