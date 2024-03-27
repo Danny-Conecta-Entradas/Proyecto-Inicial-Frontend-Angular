@@ -1,4 +1,10 @@
 <label>
     <div>{{label}}</div>
-    <input [attr.type]="type || null" [attr.name]="name || null" [attr.placeholder]="placeholder || null" [(ngModel)]="value" [attr.accept]="accept || null">
+    <input #input
+        [attr.type]="type || null"
+        [attr.name]="name || null"
+        [attr.placeholder]="placeholder || null"
+        [(ngModel)]="value"
+        [attr.accept]="accept || null"
+    >
 </label>

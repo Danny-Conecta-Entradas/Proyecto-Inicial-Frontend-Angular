@@ -27,6 +27,8 @@ export class RegisterPageComponent {
   isLoading = false
 
   async onFormSubmit(event: SubmitEvent): Promise<void> {
+    event.preventDefault()
+
     if (this.isLoading) {
       return
     }
@@ -36,8 +38,6 @@ export class RegisterPageComponent {
     if (!form) {
       return
     }
-
-    event.preventDefault()
 
     const { email, password } = Object.fromEntries(new FormData(form)) as unknown as RegisterFormData
 

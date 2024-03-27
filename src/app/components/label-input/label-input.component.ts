@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms'
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { FormsModule, NgModel } from '@angular/forms'
 
 @Component({
   selector: 'label-input',
@@ -9,6 +9,10 @@ import { FormsModule } from '@angular/forms'
   styleUrl: './label-input.component.css',
 })
 export class LabelInputComponent {
+
+  @ViewChild('input')
+  // @ViewChild('input', {read: NgModel})
+  inputElement!: ElementRef<HTMLInputElement>
 
   @Input()
   label: string = 'Unnamed Label'
@@ -22,22 +26,43 @@ export class LabelInputComponent {
   @Input()
   accept: string = ''
 
-  inputValue = ''
+  inputValue: null | string = ''
 
   @Input()
-  get value() {
+  get value(): string | null {
     return this.inputValue
   }
 
-  set value(val) {
+  set value(val: null | string | File | File[]) {
+    if (val instanceof File) {
+      this.inputElement.nativeElement.files = createFileList([val])
+      return
+    }
+
+    if (Array.isArray(val)) {
+      this.inputElement.nativeElement.files = createFileList(val)
+      return
+    }
+
     this.inputValue = val
+
     this.valueChange.emit(this.inputValue)
   }
 
   @Output()
-  valueChange = new EventEmitter<string>()
+  valueChange = new EventEmitter<null | string>()
 
   @Input()
   placeholder: string = ''
 
+}
+
+function createFileList(files: File[]) {
+  const dataTransfer = new DataTransfer()
+
+  for (const file of files) {
+    dataTransfer.items.add(file)
+  }
+
+  return dataTransfer.files
 }

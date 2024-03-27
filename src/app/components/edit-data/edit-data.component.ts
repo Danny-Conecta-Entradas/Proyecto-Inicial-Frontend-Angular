@@ -19,6 +19,8 @@ export class EditDataComponent {
   prefillData = {} as APIModel
 
   onFormSubmit(event: SubmitEvent) {
+    event.preventDefault()
+
     if (this.isLoading) {
       return
     }
@@ -28,8 +30,6 @@ export class EditDataComponent {
     if (!form) {
       return
     }
-
-    event.preventDefault()
 
     const formData = Object.fromEntries(new FormData(form)) as unknown as Omit<APIModel, 'creation_date'>
 

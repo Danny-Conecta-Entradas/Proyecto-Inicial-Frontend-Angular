@@ -6,6 +6,11 @@
     <label-input label="Name" type="text" name="name" />
     <label-input label="DNI" type="text" name="dni" />
     <label-input label="Birth Date" type="date" name="birth_date" />
-    <label-input label="Photo" type="file" name="photo_file" accept="image/*" />
+    <div class="photo">
+        <label-input label="Photo" type="file" name="photo_file" accept="image/*" [value]="webcamFile" />
+        <button class="webcam-btn" type="button" (click)="requestWebcamScreenShot()">
+            <img width="35" height="35" src="/assets/webcam.svg" alt="webcam" draggable="false">
+        </button>
+    </div>
     <button class="button" type="submit">Send Data</button>
 </form>

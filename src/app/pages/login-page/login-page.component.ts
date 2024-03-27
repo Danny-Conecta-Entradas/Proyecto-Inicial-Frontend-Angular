@@ -28,6 +28,8 @@ export class LoginPageComponent {
   isLoading = false
 
   async onFormSubmit(event: SubmitEvent): Promise<void> {
+    event.preventDefault()
+
     if (this.isLoading) {
       return
     }
@@ -37,8 +39,6 @@ export class LoginPageComponent {
     if (!form) {
       return
     }
-
-    event.preventDefault()
 
     const { email, password } = Object.fromEntries(new FormData(form)) as unknown as LoginFormData
 
