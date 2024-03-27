@@ -8,7 +8,9 @@
     row-gap: 0.5rem;
 
     & > input {
-      outline: none;
+      &:not([type="file"]) {
+        outline: none;
+      }
 
       background-color: #0072b6;
       border: solid 2px #fff;
@@ -18,7 +20,7 @@
 
       font-size: 1rem;
 
-      &:focus-visible {
+      &:not([type="file"]):focus-visible {
         background-color: #0a4d75;
       }
 
