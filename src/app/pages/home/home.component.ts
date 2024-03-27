@@ -81,6 +81,8 @@ export class HomeComponent {
       disableTracks(mediaStream)
 
       overlay.remove()
+
+      abortController.abort()
     })
 
     Object.assign(overlay.style, {
@@ -180,7 +182,9 @@ export class HomeComponent {
       alert(`Video device was disconnected, try again.`)
 
       overlay.remove()
-    })
+
+      abortController.abort()
+    }, {signal: abortController.signal})
   }
 }
 
