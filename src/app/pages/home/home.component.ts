@@ -170,10 +170,6 @@ export class HomeComponent {
       const devices = await navigator.mediaDevices.enumerateDevices()
 
       for (const device of devices) {
-        if (!(device instanceof InputDeviceInfo)) {
-          continue
-        }
-
         if (device.kind === 'videoinput') {
           return
         }
