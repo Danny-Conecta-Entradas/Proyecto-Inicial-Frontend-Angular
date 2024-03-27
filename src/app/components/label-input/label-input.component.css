@@ -1,5 +1,6 @@
 :host {
   display: block;
+  max-width: 100%;
 
   & > label {
     display: flex;
@@ -40,6 +41,33 @@
 
         &:focus-visible {
           --background-color: #015f46;
+        }
+      }
+
+      &[type="file"] {
+
+        &::-webkit-file-upload-button {
+          all: unset;
+
+          margin-right: 0.5rem;
+          padding: 0.5rem;
+          background-color: #0a3a85;
+          border-radius: 0.2rem;
+          box-shadow: 2px 2px 3px 0 #000;
+        }
+
+        @media (hover: hover) {
+          &:hover::-webkit-file-upload-button {
+            background-color: #1e5bba;
+          }
+        }
+
+        &:focus-visible::-webkit-file-upload-button {
+          background-color: #1752ad;
+        }
+
+        &:active::-webkit-file-upload-button {
+          background-color: #00265d;
         }
       }
     }

@@ -19,6 +19,9 @@ export class LabelInputComponent {
   @Input()
   name: string = ''
 
+  @Input()
+  accept: string = ''
+
   inputValue = ''
 
   @Input()
