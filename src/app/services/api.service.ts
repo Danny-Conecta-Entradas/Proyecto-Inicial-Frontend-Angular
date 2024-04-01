@@ -61,14 +61,16 @@ export default class APIService {
     const key = data._key as number
     const endpoint = new URL(`/api/edit-data/${key}`, environment.apiURL)
 
-    const stringifiedData = JSON.stringify(data)
+    const formData = new FormData()
+
+    for (const key in data) {
+      //@ts-ignore
+      formData.set(key, data[key])
+    }
 
     const response = await fetch(endpoint, {
       method: 'POST',
-      body: stringifiedData,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      body: formData,
     })
 
     if (response.status !== 200) {

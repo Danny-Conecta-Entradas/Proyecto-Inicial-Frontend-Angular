@@ -22,7 +22,20 @@
         @for (item of items; track track ? item[track] : item) {
             <tr>
                 @for (value of getItemValues(item); track $index) {
-                    <td>{{value}}</td>
+                    @if (displayedColumns[$index]?.type === 'image'){
+                        <td>
+                            <img
+                                [draggable]="false"
+                                [src]="value || displayedColumns[$index]?.imageOptions!.placeholder"
+                                [width]="displayedColumns[$index]?.imageOptions!.width"
+                                [height]="displayedColumns[$index]?.imageOptions!.height"
+                                [style]="displayedColumns[$index]?.imageOptions!.style"
+                            >
+                        </td>
+                    }
+                    @else {
+                        <td>{{value}}</td>
+                    }
                 }
                 @if (actions) {
                     <td>

@@ -8,7 +8,7 @@
     <label-input label="Birth Date" type="date" name="birth_date" />
     <div class="photo">
         <label-input label="Photo" type="file" name="photo_file" accept="image/*" [value]="webcamFile" />
-        <button class="webcam-btn" type="button" (click)="requestWebcamScreenShot()">
+        <button class="webcam-btn" type="button" (click)="requestWebcamScreenShotHandler()">
             <img width="35" height="35" src="/assets/webcam.svg" alt="webcam" draggable="false">
         </button>
     </div>

@@ -9,6 +9,8 @@ interface TableColumn {
   name: string
   keyName: string
   width?: string
+  type?: 'image',
+  imageOptions?: {width: number, height: number, placeholder?: string, style?: {[key: string]: string}}
 }
 
 type Action = {

@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { LabelInputComponent } from '../label-input/label-input.component.js'
 import APIService, { APIModel } from '../../services/api.service.js'
 import { SpinnerComponent } from '../spinner/spinner.component.js'
+import requestWebcamScreenShot from '../../../utils/request-webcam-screenshot.js'
 
 @Component({
   selector: 'app-edit-data',
@@ -66,6 +67,20 @@ export class EditDataComponent {
       this._failureListeners.clear()
     })
     .finally(() => this.isLoading = false)
+  }
+
+  webcamFile: File | null = null
+
+  async requestWebcamScreenShotHandler() {
+    const blob = await requestWebcamScreenShot().catch(reason => reason)
+
+    if (blob instanceof Error) {
+      alert(`An error happened while working with the webcam.\n${blob.message}`)
+      return
+    }
+
+    const file = new File([blob], 'webcam.png', {type: blob.type})
+    this.webcamFile = file
   }
 
   private _successListeners = new Set<() => void>()

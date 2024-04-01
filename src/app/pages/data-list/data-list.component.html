@@ -5,10 +5,38 @@
     </div>
     <table table-component class="table"
         [displayedColumns]="[
-            {width: '10rem', name: 'Creation Date', keyName: 'creation_date'},
-            {width: '10rem', name: 'Name', keyName: 'name'},
-            {width: '10rem', name: 'DNI', keyName: 'dni'},
-            {width: '10rem', name: 'Birth Date', keyName: 'birth_date'},
+            {
+                width: '10rem',
+                name: 'Creation Date',
+                keyName: 'creation_date'
+            },
+            {
+                width: '10rem',
+                name: 'Name',
+                keyName: 'name'
+            },
+            {
+                width: '10rem',
+                name: 'DNI',
+                keyName: 'dni'
+            },
+            {
+                width: '10rem',
+                name: 'Birth Date',
+                keyName: 'birth_date'
+            },
+            {
+                width: '100px',
+                name: 'Photo',
+                keyName: 'photo_url',
+                type: 'image',
+                imageOptions: {
+                    width: 75,
+                    height: 75,
+                    placeholder: '/assets/placeholder-avatar.png',
+                    style: {objectFit: 'contain', borderRadius: '50%', backgroundColor: '#000'}
+                }
+            },
         ]"
         [items]="listData"
 
