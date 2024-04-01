@@ -1,5 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { FormsModule, NgModel } from '@angular/forms'
+import { formatDateNumberAsYearMonthDay } from '../../../utils/date-utils.js'
 
 @Component({
   selector: 'label-input',
@@ -33,7 +34,11 @@ export class LabelInputComponent {
     return this.inputValue
   }
 
-  set value(val: null | string | File | File[]) {
+  set value(val: null | number | string | File | File[]) {
+    if (val == null) {
+      return
+    }
+
     if (val instanceof File) {
       this.inputElement.nativeElement.files = createFileList([val])
       return
@@ -44,7 +49,17 @@ export class LabelInputComponent {
       return
     }
 
-    this.inputValue = val
+    if (this.inputElement?.nativeElement.type === 'date') {
+      if (typeof val === 'string') {
+        this.inputValue = val
+      }
+      else
+      if (typeof val === 'number') {
+        this.inputValue = formatDateNumberAsYearMonthDay(val)
+      }
+    }
+
+    this.inputValue = String(val)
 
     this.valueChange.emit(this.inputValue)
   }

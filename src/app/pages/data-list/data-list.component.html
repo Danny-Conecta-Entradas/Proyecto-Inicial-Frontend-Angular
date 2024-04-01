@@ -1,29 +1,36 @@
 <h1 class="header">Data List</h1>
 <div class="table-block">
     <div class="options">
-        <label-input label="Filter" [(value)]="filterValue" placeholder="Type here any text to find rows that match" (input)="onFilterValueChange()" />
+        <label-input
+            label="Filter"
+            [(value)]="filterValue"
+            placeholder="Type here any text to find rows that match"
+            (input)="onFilterValueChange()"
+        />
     </div>
     <table table-component class="table"
         [displayedColumns]="[
             {
                 width: '10rem',
                 name: 'Creation Date',
-                keyName: 'creation_date'
+                keyName: 'creation_date',
+                transformValue: formatDate,
             },
             {
                 width: '10rem',
                 name: 'Name',
-                keyName: 'name'
+                keyName: 'name',
             },
             {
                 width: '10rem',
                 name: 'DNI',
-                keyName: 'dni'
+                keyName: 'dni',
             },
             {
                 width: '10rem',
                 name: 'Birth Date',
-                keyName: 'birth_date'
+                keyName: 'birth_date',
+                transformValue: formatDate,
             },
             {
                 width: '100px',
@@ -34,8 +41,8 @@
                     width: 75,
                     height: 75,
                     placeholder: '/assets/placeholder-avatar.png',
-                    style: {objectFit: 'contain', borderRadius: '50%', backgroundColor: '#000'}
-                }
+                    style: {objectFit: 'contain', borderRadius: '50%', backgroundColor: '#000'},
+                },
             },
         ]"
         [items]="listData"

@@ -6,6 +6,7 @@ import { TableComponent } from '../../components/table/table.component.js'
 import { FormsModule } from '@angular/forms'
 import ModalService from '../../services/modal.service.js'
 import { EditDataComponent } from '../../components/edit-data/edit-data.component.js'
+import { formatDateNumberAsYearMonthDay } from '../../../utils/date-utils.js'
 
 @Component({
   selector: 'app-data-list[data-page-component]',
@@ -70,6 +71,10 @@ export class DataListComponent implements OnInit {
     }
 
     return error instanceof Error
+  }
+
+  formatDate(dateNumber: number) {
+    return formatDateNumberAsYearMonthDay(dateNumber)
   }
 
 }

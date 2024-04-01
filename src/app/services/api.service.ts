@@ -4,10 +4,10 @@ import { environment } from '../../environments/environment'
 
 export interface APIModel {
   _key?: number
-  creation_date: string
+  creation_date: number
   name: string
   dni: string
-  birth_date: string
+  birth_date: number
   photo_url: string
 }
 
@@ -20,6 +20,9 @@ export default class APIService {
     const endpoint = new URL('/api/send-data/', environment.apiURL)
 
     const formData = new FormData()
+
+    data.creation_date = new Date(data.creation_date).getTime()
+    data.birth_date = new Date(data.birth_date).getTime()
 
     for (const key in data) {
       //@ts-ignore
@@ -62,6 +65,8 @@ export default class APIService {
     const endpoint = new URL(`/api/edit-data/${key}`, environment.apiURL)
 
     const formData = new FormData()
+
+    data.birth_date = new Date(data.birth_date).getTime()
 
     for (const key in data) {
       //@ts-ignore

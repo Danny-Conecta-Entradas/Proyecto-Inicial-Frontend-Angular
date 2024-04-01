@@ -32,12 +32,7 @@ export class HomeComponent {
 
     const formData = Object.fromEntries(new FormData(form)) as unknown as Omit<APIModel, 'creation_date'>
 
-    const currentDate = new Date()
-
-    const year = currentDate.getFullYear()
-    const month = (currentDate.getMonth() + 1).toString().padStart(2, '0')
-    const day = currentDate.getDate()
-    const creation_date = `${year}-${month}-${day}`
+    const creation_date = Date.now()
 
     const resultData: APIModel = {...formData, creation_date}
 
