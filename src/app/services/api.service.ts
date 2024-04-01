@@ -83,4 +83,20 @@ export default class APIService {
     }
   }
 
+  async loadCSVFile(file: File) {
+    const endpoint = new URL(`/api/send-data-csv/`, environment.apiURL)
+
+    const formData = new FormData()
+    formData.append('csv_file', file)
+
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      body: formData,
+    })
+
+    if (response.status !== 200) {
+      throw new Error(`Request rejected with status code ${response.status}`)
+    }
+  }
+
 }

@@ -1,6 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { FormsModule, NgModel } from '@angular/forms'
 import { formatDateNumberAsYearMonthDay } from '../../../utils/date-utils.js'
+import { createFileList } from '../../../utils/input-utils.js'
 
 @Component({
   selector: 'label-input',
@@ -70,14 +71,4 @@ export class LabelInputComponent {
   @Input()
   placeholder: string = ''
 
-}
-
-function createFileList(files: File[]) {
-  const dataTransfer = new DataTransfer()
-
-  for (const file of files) {
-    dataTransfer.items.add(file)
-  }
-
-  return dataTransfer.files
 }

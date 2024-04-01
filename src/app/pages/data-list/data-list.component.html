@@ -1,11 +1,22 @@
 <h1 class="header">Data List</h1>
+@if (isLoading) {
+    <spinner-widget class="spinner" />
+}
 <div class="table-block">
     <div class="options">
         <label-input
+            class="filter"
             label="Filter"
             [(value)]="filterValue"
             placeholder="Type here any text to find rows that match"
             (input)="onFilterValueChange()"
+        />
+        <label-input
+            class="file"
+            label="Load CSV file "
+            (change)="loadCSVFile($event)"
+            type="file"
+            accept="text/csv"
         />
     </div>
     <table table-component class="table"
