@@ -8,7 +8,8 @@
         }
     </tr>
 </thead>
-<tbody>
+<!-- Condition to allow display properly spinner -->
+<tbody [style]="items != null ? null : {position: 'relative', display: 'block', height: 'calc(100% - 80px)'}">
     @if (items == null) {
         <spinner-widget class="spinner" />
     }

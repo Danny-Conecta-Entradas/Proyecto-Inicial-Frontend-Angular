@@ -6,7 +6,7 @@
   border-spacing: 2px 0.7rem;
 
   padding-inline: 0.8rem;
-  padding-block: 0.5rem;
+  /* padding-block: 0.5rem; */
 
   & > :is(thead, tbody) > tr {
 
@@ -26,21 +26,30 @@
     }
   }
 
-  & > thead > tr {
-    background-color: #171f2e;
+  & > thead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+
+    & > tr {
+      background-color: #171f2e;
+    }
   }
 
-  & > tbody > tr {
+  & > tbody {
 
-    background-color: #003f6d;
+    & > tr {
+      position: relative;
+      background-color: #003f6d;
 
-    /* &:nth-child(2n + 1) {
-      background-color: #67a6ea;
+      /* &:nth-child(2n + 1) {
+        background-color: #67a6ea;
+      }
+
+      &:nth-child(2n) {
+        background-color: #2ccaa0;
+      } */
     }
-
-    &:nth-child(2n) {
-      background-color: #2ccaa0;
-    } */
   }
 }
 
