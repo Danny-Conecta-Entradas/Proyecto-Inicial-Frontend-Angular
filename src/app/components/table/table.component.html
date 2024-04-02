@@ -53,10 +53,11 @@
         </tbody>
     </table>
 </div>
-@if (hasPagination()) {
+@if (hasPagination() && isArray(items)) {
     <div class="pagination-menu">
         <button class="page-button" (click)="previousPage()">Previous</button>
         <div class="current-page" [style.visibility]="pagesLength > 0 ? 'visible' : 'hidden'">{{currentPage + 1}} / {{pagesLength}}</div>
+        <div class="page-rows">{{currentItemsCount}} of {{items.length}}</div>
         <button class="page-button" (click)="nextPage()">Next</button>
     </div>
 }

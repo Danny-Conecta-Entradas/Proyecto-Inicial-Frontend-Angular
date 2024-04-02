@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, OnChanges, SimpleChanges, inject } from '@angular/core';
 import { SpinnerComponent } from '../spinner/spinner.component.js'
+import { clamp } from '../../../utils/math-utils.js'
 
 type TableItem = {
   [key: string]: any
@@ -73,6 +74,10 @@ export class TableComponent implements OnChanges {
 
   hasPagination() {
     return this.pagination && this.pageRows > 0
+  }
+
+  isArray(array: unknown): array is Array<unknown>  {
+    return Array.isArray(array)
   }
 
   get displayedItems() {
@@ -154,7 +159,7 @@ export class TableComponent implements OnChanges {
       return
     }
 
-    this.currentPage = Math.max(0, Math.min(pageIndex, this.pagesLength - 1))
+    this.currentPage = clamp(0, pageIndex, this.pagesLength - 1)
   }
 
   nextPage() {
@@ -171,6 +176,14 @@ export class TableComponent implements OnChanges {
 
   lastPage() {
     this.setPage(this.pagesLength - 1)
+  }
+
+  get currentItemsCount() {
+    if (!Array.isArray(this.items)) {
+      return
+    }
+
+    return clamp(0, this.pageRows * (this.currentPage + 1), this.items.length)
   }
 
 }
