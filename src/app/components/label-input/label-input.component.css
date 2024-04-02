@@ -14,7 +14,6 @@
 
       background-color: var(--input-background-color, #0072b6);
       border: solid 2px #fff;
-      padding: 0;
       padding-block: 0.4rem;
       padding-inline: 0.8rem;
 
@@ -22,6 +21,10 @@
 
       &:not([type="file"]):focus-visible {
         background-color: var(--input-background-color-focus, #0a4d75);
+      }
+
+      &[type="file"] {
+        padding-block: 0.3rem;
       }
 
       &::placeholder {
@@ -52,7 +55,8 @@
           all: unset;
 
           margin-right: 0.5rem;
-          padding: 0.5rem;
+          padding-inline: 0.5rem;
+          padding-block: 0.3rem;
           background-color: #0a3a85;
           border-radius: 0.2rem;
           box-shadow: 2px 2px 3px 0 #000;

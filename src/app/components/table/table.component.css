@@ -1,6 +1,12 @@
 :host {
   display: block;
 
+  padding: 1rem;
+
+  background-color: #244764;
+  border-radius: 0.3rem;
+  box-shadow: 0 0 4px 0 #64c6ff inset;
+
   & > .table {
     height: 100%;
   }
