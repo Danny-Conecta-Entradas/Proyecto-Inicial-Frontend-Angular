@@ -71,6 +71,7 @@ export class DataListComponent implements OnInit {
     .finally(() => {
       this.isLoading = false
 
+      // Reset input
       target.files = createFileList()
     })
   }
