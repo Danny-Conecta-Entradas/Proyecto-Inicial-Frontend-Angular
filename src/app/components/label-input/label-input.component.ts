@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { FormsModule, NgModel } from '@angular/forms'
+import { FormsModule } from '@angular/forms'
 import { formatDateNumberAsYearMonthDay } from '../../../utils/date-utils.js'
 import { createFileList } from '../../../utils/input-utils.js'
 
@@ -13,7 +13,6 @@ import { createFileList } from '../../../utils/input-utils.js'
 export class LabelInputComponent {
 
   @ViewChild('input')
-  // @ViewChild('input', {read: NgModel})
   inputElement!: ElementRef<HTMLInputElement>
 
   @Input()
@@ -28,39 +27,85 @@ export class LabelInputComponent {
   @Input()
   accept: string = ''
 
-  inputValue: null | string = ''
+  inputValue: string = ''
+
+  realInputValue: null | boolean | number | string | File | File[] | Date = null
+
+  files: FileList | null = null
 
   @Input()
-  get value(): string | null {
+  get value(): string {
     return this.inputValue
   }
 
-  set value(val: null | number | string | File | File[]) {
-    if (val == null) {
-      return
-    }
+  set value(val: LabelInputComponent['realInputValue']) {
+    this.realInputValue = val
 
-    if (val instanceof File) {
-      this.inputElement.nativeElement.files = createFileList([val])
-      return
-    }
+    switch (this.type) {
 
-    if (Array.isArray(val)) {
-      this.inputElement.nativeElement.files = createFileList(val)
-      return
-    }
-
-    if (this.inputElement?.nativeElement.type === 'date') {
-      if (typeof val === 'string') {
-        this.inputValue = val
+      case 'email':
+      case 'password':
+      case 'text': {
+        if (this.realInputValue == null) {
+          this.inputValue = ''
+        }
+        else
+        if (typeof this.realInputValue === 'string') {
+          this.inputValue = this.realInputValue
+        }
       }
-      else
-      if (typeof val === 'number') {
-        this.inputValue = formatDateNumberAsYearMonthDay(val)
-      }
-    }
+      break
 
-    this.inputValue = String(val)
+      case 'number': {
+        if (this.realInputValue == null) {
+          this.inputValue = ''
+        }
+        else
+        if (typeof this.realInputValue === 'string') {
+          this.inputValue = this.realInputValue
+        }
+        else
+        if (typeof this.realInputValue === 'number') {
+          this.inputValue = String(this.realInputValue)
+        }
+      }
+      break
+
+      case 'file': {
+        if (this.realInputValue == null) {
+          this.files = null
+        }
+        else
+        if (this.realInputValue instanceof File) {
+          this.files = createFileList([this.realInputValue])
+        }
+        else
+        if (Array.isArray(this.realInputValue) && this.realInputValue[0] instanceof File) {
+          this.files = createFileList(this.realInputValue)
+        }
+      }
+      break
+
+      case 'date': {
+        if (this.realInputValue == null) {
+          this.inputValue = ''
+        }
+        else
+        if (typeof this.realInputValue === 'string') {
+          this.inputValue = this.realInputValue
+        }
+        else
+        if (typeof this.realInputValue === 'number') {
+          this.inputValue = formatDateNumberAsYearMonthDay(this.realInputValue)
+        }
+        else
+        if (this.realInputValue instanceof Date) {
+          this.inputValue = formatDateNumberAsYearMonthDay(this.realInputValue.getTime())
+        }
+      }
+      break
+
+    }
 
     this.valueChange.emit(this.inputValue)
   }

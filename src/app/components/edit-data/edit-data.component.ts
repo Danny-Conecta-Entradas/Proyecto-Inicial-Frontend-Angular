@@ -103,8 +103,4 @@ export class EditDataComponent {
     })
   }
 
-  formateDate(dateNumber: number) {
-    return formatDateNumberAsYearMonthDay(dateNumber)
-  }
-
 }
