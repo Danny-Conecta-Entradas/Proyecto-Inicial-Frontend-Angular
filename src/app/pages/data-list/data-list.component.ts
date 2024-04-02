@@ -63,16 +63,15 @@ export class DataListComponent implements OnInit {
     await this._apiService.loadCSVFile(file)
     .then(() => {
       alert('CSV uploaded successfuly.')
+      this.fetchData()
     })
     .catch(reason => {
-      alert(`An error happend during the upload of the CSV file.\n${reason.message}`)
+      alert(`An error happend during the upload of the CSV file.\n${reason.message}\nMake sure that file format is valid.\nSeparator character of the CSV must be a comma.`)
     })
     .finally(() => {
       this.isLoading = false
 
       target.files = createFileList()
-
-      this.fetchData()
     })
   }
 
