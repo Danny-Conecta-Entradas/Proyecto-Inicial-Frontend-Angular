@@ -49,10 +49,47 @@ export class TableComponent implements OnChanges {
   scrollable = false
 
   @Input()
-  pageRows = 10
+  pagination = false
+
+  @Input()
+  pageRows: number = 10
+
+  /**
+   * Pages first index is 0 like Arrays
+   */
+  currentPage = 0
+
+  get pagesLength() {
+    if (!this.hasPagination()) {
+      return 0
+    }
+
+    if (Array.isArray(this.items)) {
+      return Math.ceil(this.items.length / this.pageRows)
+    }
+
+    return 0
+  }
+
+  hasPagination() {
+    return this.pagination && this.pageRows > 0
+  }
 
   get displayedItems() {
-    return this.items
+    if (!this.hasPagination()) {
+      return this.items
+    }
+
+    if (!Array.isArray(this.items)) {
+      return this.items
+    }
+
+    const start = this.currentPage * this.pageRows
+    const end = start + this.pageRows
+
+    const pageItems = this.items.slice(start, end)
+
+    return pageItems
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -62,6 +99,10 @@ export class TableComponent implements OnChanges {
 
     // Handle sizing of the table depending if it is scrollable and have items
     if (changes.items) {
+      if (this.hasPagination()) {
+        this.currentPage = 0
+      }
+
       if (!Array.isArray(this.items)) {
         Object.assign(this._host.nativeElement.style, {
           height: '',
@@ -106,6 +147,30 @@ export class TableComponent implements OnChanges {
     }
 
     return error instanceof Error
+  }
+
+  setPage(pageIndex: number) {
+    if (!this.hasPagination() || this.pagesLength === 0) {
+      return
+    }
+
+    this.currentPage = Math.max(0, Math.min(pageIndex, this.pagesLength - 1))
+  }
+
+  nextPage() {
+    this.setPage(this.currentPage + 1)
+  }
+
+  previousPage() {
+    this.setPage(this.currentPage - 1)
+  }
+
+  firstPage() {
+    this.setPage(0)
+  }
+
+  lastPage() {
+    this.setPage(this.pagesLength - 1)
   }
 
 }

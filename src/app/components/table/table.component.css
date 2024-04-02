@@ -1,20 +1,32 @@
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.6rem;
 
-  padding: 1rem;
+  padding: 0.7rem;
 
   background-color: #244764;
   border-radius: 0.3rem;
   box-shadow: 0 0 4px 0 #64c6ff inset;
+
+  & > .table-wrapper {
+    flex-grow: 1;
+  }
+
+  & > .pagination-menu {
+    
+  }
+}
+
+.table-wrapper {
 
   & > .table {
     height: 100%;
   }
 }
 
-
 .table {
-  background-color: #2c5ba2;
+  outline: solid 2px #64a2ff;
   background-color: #3e75c8;
   border-radius: 0.5rem;
   box-shadow: 0 0 2px 1px #fff9 inset;
@@ -69,6 +81,10 @@
       &:nth-child(2n) {
         background-color: #2ccaa0;
       } */
+
+      & > td {
+        padding-block: 0.5rem;
+      }
     }
   }
 }
@@ -121,5 +137,34 @@
 
   &:active {
     background-color: #7c0674;
+  }
+}
+
+
+.pagination-menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  & > .page-button {
+    padding: 0.3rem;
+    padding-inline: 0.6rem;
+
+    background-color: #1678d4;
+    border-radius: 0.4rem;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: #3e9cf3;
+      }
+    }
+
+    &:focus-visible {
+      background-color: #3e9cf3;
+    }
+
+    &:active {
+      background-color: #003464;
+    }
   }
 }
