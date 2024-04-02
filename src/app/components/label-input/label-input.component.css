@@ -51,7 +51,7 @@
 
       &[type="file"] {
 
-        &::-webkit-file-upload-button {
+        &::file-selector-button {
           all: unset;
 
           margin-right: 0.5rem;
@@ -63,16 +63,16 @@
         }
 
         @media (hover: hover) {
-          &:hover::-webkit-file-upload-button {
+          &:hover::file-selector-button {
             background-color: #1e5bba;
           }
         }
 
-        &:focus-visible::-webkit-file-upload-button {
+        &:focus-visible::file-selector-button {
           background-color: #1752ad;
         }
 
-        &:active::-webkit-file-upload-button {
+        &:active::file-selector-button {
           background-color: #00265d;
         }
       }
