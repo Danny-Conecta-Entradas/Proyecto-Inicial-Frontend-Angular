@@ -3,6 +3,7 @@ import { LabelInputComponent } from '../label-input/label-input.component.js'
 import APIService, { APIModel } from '../../services/api.service.js'
 import { SpinnerComponent } from '../spinner/spinner.component.js'
 import requestWebcamScreenShot from '../../../utils/request-webcam-screenshot.js'
+import { formatDateNumberAsYearMonthDay } from '../../../utils/date-utils.js'
 
 @Component({
   selector: 'app-edit-data',
@@ -100,6 +101,10 @@ export class EditDataComponent {
       this.onSuccess(() => resolve())
       this.onFailure(() => reject())
     })
+  }
+
+  formateDate(dateNumber: number) {
+    return formatDateNumberAsYearMonthDay(dateNumber)
   }
 
 }

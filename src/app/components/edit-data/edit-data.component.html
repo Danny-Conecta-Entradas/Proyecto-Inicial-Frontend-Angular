@@ -4,7 +4,7 @@
     }
     <label-input label="Name" type="text" name="name" [value]="prefillData.name" />
     <label-input label="DNI" type="text" name="dni" [value]="prefillData.dni" />
-    <label-input label="Birth Date" type="date" name="birth_date" [value]="prefillData.birth_date" />
+    <label-input label="Birth Date" type="date" name="birth_date" [value]="formateDate(prefillData.birth_date)" />
     <div class="photo">
         <label-input label="Photo" type="file" name="photo_file" accept="image/*" [value]="webcamFile" />
         <button class="webcam-btn" type="button" (click)="requestWebcamScreenShotHandler()">
