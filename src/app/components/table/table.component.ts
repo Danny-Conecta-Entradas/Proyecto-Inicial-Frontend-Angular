@@ -10,6 +10,7 @@ interface TableColumn {
   name: string
   keyName: string
   width?: string
+  minWidth?: string
   transformValue?: (item: any) => unknown
   type?: 'image'
   imageOptions?: {width: number, height: number, placeholder?: string, style?: {[key: string]: string}}

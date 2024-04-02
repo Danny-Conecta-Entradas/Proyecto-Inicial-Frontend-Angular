@@ -18,6 +18,8 @@
   }
 
   & > .table-block {
+    max-width: 100%;
+
     position: relative;
     margin: auto;
 
@@ -29,7 +31,9 @@
       display: flex;
       justify-content: space-around;
       align-items: flex-end;
+      flex-wrap: wrap;
       column-gap: 1rem;
+      row-gap: 1rem;
 
       & > .filter {
         width: 22rem;

@@ -3,7 +3,7 @@
         <thead>
             <tr>
                 @for (column of displayedColumns; track $index) {
-                    <th [style]="{width: column.width}">{{column.name}}</th>
+                    <th [style.width]="column.width" [style.minWidth]="column.minWidth">{{column.name}}</th>
                 }
                 @if (actions) {
                     <th [style.width]="actionsColumn?.width">{{actionsColumn?.name}}</th>
