@@ -21,6 +21,11 @@ export default class APIService {
 
     const formData = new FormData()
 
+    //@ts-ignore
+    if (data.birth_date === '') {
+      throw new Error(`"birth_date" field is required.`)
+    }
+
     data.creation_date = new Date(data.creation_date).getTime()
     data.birth_date = new Date(data.birth_date).getTime()
 

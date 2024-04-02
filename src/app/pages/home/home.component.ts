@@ -42,9 +42,9 @@ export class HomeComponent {
 
     this._apiService.sendData(resultData)
     .then(() => alert('Data uploaded successfuly.'))
-    .catch((reason: unknown) => {
+    .catch((reason) => {
       console.warn(reason)
-      alert('An error occurred after submiting the form.')
+      alert(`An error occurred after submiting the form.\n${reason.message}`)
     })
     .finally(() => this.isLoading = false)
   }
