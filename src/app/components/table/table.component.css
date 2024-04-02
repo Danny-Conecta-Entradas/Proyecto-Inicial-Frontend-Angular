@@ -1,3 +1,8 @@
+/*
+  The table won't work the same in Firefox due to inconsistencies
+  and weird behaviors of Firefox, but it mostly works.
+*/
+
 :host {
   display: flex;
   flex-direction: column;
@@ -26,7 +31,7 @@
 }
 
 .table {
-  outline: solid 2px #64a2ff;
+  border: solid 2px #64a2ff;
   background-color: #3e75c8;
   border-radius: 0.5rem;
   box-shadow: 0 0 2px 1px #fff9 inset;
@@ -64,7 +69,10 @@
     z-index: 10;
 
     & > tr {
-      background-color: #171f2e;
+
+      & > th {
+        background-color: #171f2e;
+      }
     }
   }
 
@@ -72,7 +80,6 @@
 
     & > tr {
       position: relative;
-      background-color: #003f6d;
 
       /* &:nth-child(2n + 1) {
         background-color: #67a6ea;
@@ -84,6 +91,8 @@
 
       & > td {
         padding-block: 0.5rem;
+
+        background-color: #003f6d;
       }
     }
   }
