@@ -36,7 +36,9 @@
         width: 22rem;
       }
 
-      & > .file {}
+      & > .file {
+        --input-background-color: #009f76;
+      }
     }
   }
 }
