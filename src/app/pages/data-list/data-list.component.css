@@ -22,9 +22,7 @@
     margin: auto;
 
     & > .table {
-      display: block;
       height: 390px;
-      overflow: auto;
     }
 
     & > .options {

@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, SimpleChanges, inject } from '@angular/core';
 import { SpinnerComponent } from '../spinner/spinner.component.js'
 
 type TableItem = {
@@ -20,13 +20,15 @@ type Action = {
 }
 
 @Component({
-  selector: 'table[table-component]',
+  selector: 'table-component',
   standalone: true,
   imports: [SpinnerComponent],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css'
 })
 export class TableComponent implements OnChanges {
+
+  private _host: ElementRef<HTMLTableElement> = inject(ElementRef<HTMLTableElement>)
 
   @Input()
   items: TableItem[] | Error | null = null
@@ -43,9 +45,34 @@ export class TableComponent implements OnChanges {
   @Input()
   actions?: Action[]
 
+  @Input()
+  scrollable = false
+
+  @Input()
+  pageRows = 10
+
+  get displayedItems() {
+    return this.items
+  }
+
   ngOnChanges(changes: SimpleChanges) {
-    if (this.displayedColumns.length === 0) {
+    if (changes.displayedColumns && this.displayedColumns.length === 0) {
       this.displayedColumns = this.getDefaultColumns()
+    }
+
+    // Handle sizing of the table depending if it is scrollable and have items
+    if (changes.items) {
+      if (!Array.isArray(this.items)) {
+        Object.assign(this._host.nativeElement.style, {
+          height: '',
+        })
+      }
+      else
+      if (!this.scrollable) {
+        Object.assign(this._host.nativeElement.style, {
+          height: 'auto',
+        })
+      }
     }
   }
 

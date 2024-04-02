@@ -31,3 +31,4 @@ https://stackoverflow.com/questions/36745734/how-to-add-conditional-attribute-in
 https://angular.io/guide/build  
 https://medium.com/@greenFlag/how-to-easily-and-quickly-create-a-modal-in-angular-a2f82d5c11f6  
 https://dev.to/omamaaslam/elementref-in-angular-how-to-use-it-5039  
+https://stackoverflow.com/questions/37383669/how-to-get-host-element-reference  

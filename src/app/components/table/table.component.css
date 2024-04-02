@@ -1,4 +1,13 @@
 :host {
+  display: block;
+
+  & > .table {
+    height: 100%;
+  }
+}
+
+
+.table {
   background-color: #2c5ba2;
   background-color: #3e75c8;
   border-radius: 0.5rem;
@@ -7,6 +16,11 @@
 
   padding-inline: 0.8rem;
   /* padding-block: 0.5rem; */
+
+  &.-scrollable {
+    display: block;
+    overflow: auto;
+  }
 
   & > :is(thead, tbody) > tr {
 
@@ -53,8 +67,7 @@
   }
 }
 
-
-:host {
+.table {
 
   & > tbody {
     position: relative;

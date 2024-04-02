@@ -1,51 +1,53 @@
-<thead>
-    <tr>
-        @for (column of displayedColumns; track $index) {
-            <th [style]="{width: column.width}">{{column.name}}</th>
+<table class="table" [class.-scrollable]="scrollable">
+    <thead>
+        <tr>
+            @for (column of displayedColumns; track $index) {
+                <th [style]="{width: column.width}">{{column.name}}</th>
+            }
+            @if (actions) {
+                <th [style.width]="actionsColumn?.width">{{actionsColumn?.name}}</th>
+            }
+        </tr>
+    </thead>
+    <!-- Condition to allow display properly spinner and messages -->
+    <tbody [style]="(!scrollable || displayedItems != null && !isError(displayedItems) && displayedItems.length > 0) ? null : {position: 'relative', display: 'block', height: 'calc(100% - 80px)'}">
+        @if (displayedItems == null) {
+            <spinner-widget class="spinner" />
         }
-        @if (actions) {
-            <th [style.width]="actionsColumn?.width">{{actionsColumn?.name}}</th>
+        @else if (isError(displayedItems)) {
+            <div class="message -error">An error happened while fetching the data</div>
         }
-    </tr>
-</thead>
-<!-- Condition to allow display properly spinner and messages -->
-<tbody [style]="(items != null && !isError(items) && items.length > 0) ? null : {position: 'relative', display: 'block', height: 'calc(100% - 80px)'}">
-    @if (items == null) {
-        <spinner-widget class="spinner" />
-    }
-    @else if (isError(items)) {
-        <div class="message -error">An error happened while fetching the data</div>
-    }
-    @else if (items.length === 0) {
-        <div class="message">List is empty</div>
-    }
-    @else {
-        @for (item of items; track track ? item[track] : item) {
-            <tr>
-                @for (value of getItemValues(item); track $index) {
-                    @if (displayedColumns[$index]?.type === 'image'){
+        @else if (displayedItems.length === 0) {
+            <div class="message">List is empty</div>
+        }
+        @else {
+            @for (item of displayedItems; track track ? item[track] : item) {
+                <tr>
+                    @for (value of getItemValues(item); track $index) {
+                        @if (displayedColumns[$index]?.type === 'image'){
+                            <td>
+                                <img
+                                    [draggable]="false"
+                                    [src]="value || displayedColumns[$index]?.imageOptions!.placeholder"
+                                    [width]="displayedColumns[$index]?.imageOptions!.width"
+                                    [height]="displayedColumns[$index]?.imageOptions!.height"
+                                    [style]="displayedColumns[$index]?.imageOptions!.style"
+                                >
+                            </td>
+                        }
+                        @else {
+                            <td>{{displayedColumns[$index]?.transformValue?.(value) ?? value}}</td>
+                        }
+                    }
+                    @if (actions) {
                         <td>
-                            <img
-                                [draggable]="false"
-                                [src]="value || displayedColumns[$index]?.imageOptions!.placeholder"
-                                [width]="displayedColumns[$index]?.imageOptions!.width"
-                                [height]="displayedColumns[$index]?.imageOptions!.height"
-                                [style]="displayedColumns[$index]?.imageOptions!.style"
-                            >
+                            @for (action of actions; track $index) {
+                                <button class="action" (click)="action.callback(item)">{{action.name}}</button>
+                            }
                         </td>
                     }
-                    @else {
-                        <td>{{displayedColumns[$index]?.transformValue?.(value) ?? value}}</td>
-                    }
-                }
-                @if (actions) {
-                    <td>
-                        @for (action of actions; track $index) {
-                            <button class="action" (click)="action.callback(item)">{{action.name}}</button>
-                        }
-                    </td>
-                }
-            </tr>
+                </tr>
+            }
         }
-    }
-</tbody>
+    </tbody>
+</table>

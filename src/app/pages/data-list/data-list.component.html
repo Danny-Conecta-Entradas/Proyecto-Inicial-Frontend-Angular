@@ -19,7 +19,11 @@
             accept="text/csv"
         />
     </div>
-    <table table-component class="table"
+    <table-component class="table"
+        [scrollable]="true"
+
+        [items]="listData"
+
         [displayedColumns]="[
             {
                 width: '10rem',
@@ -56,12 +60,10 @@
                 },
             },
         ]"
-        [items]="listData"
 
         [actionsColumn]="{name: 'Actions'}"
         [actions]="[
             {name: 'Edit', callback: editData.bind(this)},
         ]"
-    >
-    </table>
+    />
 </div>
