@@ -2,6 +2,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  column-gap: 3rem;
+
+  overflow: auto;
 
   padding-block: 1rem;
   padding-inline: 1.5rem;
