@@ -92,6 +92,23 @@ export class DataListComponent implements OnInit {
     this.fetchData()
   }
 
+  async deleteData(item: APIModel) {
+    const answer = confirm(`Do you really want to delete this item?`)
+
+    if (!answer) {
+      return
+    }
+
+    await this._apiService.deleteData(item)
+    .then(() => {
+      // alert(`Item deleted successfuly.`)
+      this.fetchData()
+    })
+    .catch(reason => {
+      alert(`An error happened trying to delete the item.\n${reason.message}`)
+    })
+  }
+
   async fetchData() {
     this.listData = null
 

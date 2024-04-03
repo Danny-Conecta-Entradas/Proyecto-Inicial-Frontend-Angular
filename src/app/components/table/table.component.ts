@@ -21,6 +21,12 @@ type Action = {
   callback: (item: any) => void
 }
 
+type ActionColumn = {
+  name: string
+  width?: string
+  minWidth?: string
+}
+
 @Component({
   selector: 'table-component',
   standalone: true,
@@ -42,7 +48,7 @@ export class TableComponent implements OnChanges {
   track?: string
 
   @Input()
-  actionsColumn?: {name: string, width?: string} = {name: 'Actions'}
+  actionsColumn?: ActionColumn = {name: 'Actions'}
 
   @Input()
   actions?: Action[]

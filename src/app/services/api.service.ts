@@ -104,6 +104,19 @@ export default class APIService {
     }
   }
 
+  async deleteData(data: APIModel) {
+    const key = data._key as number
+    const endpoint = new URL(`/api/delete-data/${key}`, environment.apiURL)
+
+    const response = await fetch(endpoint, {
+      method: 'POST',
+    })
+
+    if (response.status !== 200) {
+      throw new Error(`Request rejected with status code ${response.status}`)
+    }
+  }
+
   async loadCSVFile(file: File) {
     const endpoint = new URL(`/api/send-data-csv/`, environment.apiURL)
 

@@ -6,7 +6,7 @@
                     <th [style.width]="column.width" [style.minWidth]="column.minWidth">{{column.name}}</th>
                 }
                 @if (actions) {
-                    <th [style.width]="actionsColumn?.width">{{actionsColumn?.name}}</th>
+                    <th [style.width]="actionsColumn?.width" [style.minWidth]="actionsColumn?.minWidth">{{actionsColumn?.name}}</th>
                 }
             </tr>
         </thead>
@@ -42,9 +42,15 @@
                         }
                         @if (actions) {
                             <td>
-                                @for (action of actions; track $index) {
-                                    <button class="action" (click)="action.callback(item)">{{action.name}}</button>
-                                }
+                                <div class="action-button-wrapper">
+                                    @for (action of actions; track $index) {
+                                        <button class="action"
+                                            (click)="action.callback(item)"
+                                        >
+                                            {{action.name}}
+                                        </button>
+                                    }
+                                </div>
                             </td>
                         }
                     </tr>

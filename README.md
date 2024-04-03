@@ -36,3 +36,4 @@ https://stackoverflow.com/questions/53396176/elementref-is-null-after-building-a
 https://developer.mozilla.org/en-US/docs/Web/CSS/::file-selector-button  
 https://firebase.google.com/docs/reference/node/firebase.FirebaseError  
 https://firebase.google.com/docs/auth/admin/errors  
+https://cloud.google.com/datastore/docs/samples/datastore-delete  

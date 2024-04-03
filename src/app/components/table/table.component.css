@@ -125,6 +125,10 @@
   }
 }
 
+.action-button-wrapper {
+  display: flex;
+  gap: 1rem;
+}
 
 .action {
   padding: 0.6rem;
