@@ -47,7 +47,35 @@ export class RegisterPageComponent {
 
     if (userCredentials instanceof FirebaseError) {
       console.warn(userCredentials)
-      alert(`No se ha podido registrar la cuenta. Error: ${userCredentials.message}`)
+
+      let message = ''
+
+      switch (userCredentials.code) {
+
+        case 'auth/invalid-email': {
+          message = `The provided value for the email user property is invalid. It must be a string email address.`
+        }
+        break
+
+        case 'auth/missing-password': {
+          message = `The password cannot be empty.`
+        }
+        break
+
+        case 'auth/weak-password': {
+          message = `The provided value for the password user property is invalid. It must be a string with at least six characters.`
+        }
+        break
+
+        case 'auth/email-already-in-use': {
+          message = `The provided email is already in use by an existing user. Each user must have a unique email.`
+        }
+        break
+
+      }
+
+      alert(message)
+
       this.isLoading = false
       return
     }
