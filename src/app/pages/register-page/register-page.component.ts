@@ -53,7 +53,7 @@ export class RegisterPageComponent {
       switch (userCredentials.code) {
 
         case 'auth/invalid-email': {
-          message = `The provided value for the email user property is invalid. It must be a string email address.`
+          message = `The provided value for the email is invalid. It must be a string email address.`
         }
         break
 
@@ -63,7 +63,7 @@ export class RegisterPageComponent {
         break
 
         case 'auth/weak-password': {
-          message = `The provided value for the password user property is invalid. It must be a string with at least six characters.`
+          message = `The provided value for the password is invalid. It must be a string with at least six characters.`
         }
         break
 
