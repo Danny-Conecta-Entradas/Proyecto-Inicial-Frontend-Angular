@@ -34,3 +34,5 @@ https://dev.to/omamaaslam/elementref-in-angular-how-to-use-it-5039
 https://stackoverflow.com/questions/37383669/how-to-get-host-element-reference  
 https://stackoverflow.com/questions/53396176/elementref-is-null-after-building-angular-app  
 https://developer.mozilla.org/en-US/docs/Web/CSS/::file-selector-button  
+https://firebase.google.com/docs/reference/node/firebase.FirebaseError  
+https://firebase.google.com/docs/auth/admin/errors  

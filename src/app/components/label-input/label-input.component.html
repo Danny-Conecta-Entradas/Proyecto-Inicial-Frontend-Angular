@@ -1,5 +1,8 @@
 <label>
-    <div>{{label}}</div>
+    <div>
+        {{label}}
+        <ng-content select='[slot="label"]' />
+    </div>
     <input #input
         [attr.type]="type || null"
         [attr.name]="name || null"

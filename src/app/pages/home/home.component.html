@@ -3,9 +3,15 @@
     @if (isLoading) {
         <spinner-widget class="spinner" />
     }
-    <label-input label="Name" type="text" name="name" />
-    <label-input label="DNI" type="text" name="dni" />
-    <label-input label="Birth Date" type="date" name="birth_date" />
+    <label-input label="Name" type="text" name="name">
+        <span slot="label" style="color: #f00;">*</span>
+    </label-input>
+    <label-input label="DNI" type="text" name="dni">
+        <span slot="label" style="color: #f00;">*</span>
+    </label-input>
+    <label-input label="Birth Date" type="date" name="birth_date">
+        <span slot="label" style="color: #f00;">*</span>
+    </label-input>
     <div class="photo">
         <label-input label="Photo" type="file" name="photo_file" accept="image/*" [value]="webcamFile" />
         <button class="webcam-btn" type="button" (click)="requestWebcamScreenShotHandler()">

@@ -34,7 +34,9 @@ export class HomeComponent {
 
     const creation_date = Date.now()
 
-    const resultData: APIModel = {...formData, creation_date}
+    const birth_date = new Date(formData.birth_date).getTime()
+
+    const resultData: APIModel = {...formData, birth_date, creation_date}
 
     console.log(resultData)
 
