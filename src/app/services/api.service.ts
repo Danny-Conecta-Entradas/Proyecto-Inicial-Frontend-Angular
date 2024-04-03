@@ -25,8 +25,17 @@ export default class APIService {
       throw new Error(`"Name" field is required.`)
     }
 
+    if (data.name.length > 30) {
+      throw new Error(`"Name" field cannot be longer than 30 characters.`)
+    }
+
     if (data.dni === '') {
       throw new Error(`"DNI" field is required.`)
+    }
+
+    const dniRegExp =  /^[1-9]{8,8}[A-Z]$/
+    if (!dniRegExp.test(data.dni)) {
+      throw new Error(`"DNI" field must follow this format "12345678A".`)
     }
 
     if (Number.isNaN(data.birth_date)) {
