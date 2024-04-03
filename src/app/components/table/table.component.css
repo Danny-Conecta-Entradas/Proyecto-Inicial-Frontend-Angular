@@ -103,6 +103,9 @@
   & > tbody {
     position: relative;
 
+    /* Try to make it not look to bad on firefox while <tbody> is empty */
+    height: 100px;
+
     & > .spinner {
       position: absolute;
       inset: 0;
