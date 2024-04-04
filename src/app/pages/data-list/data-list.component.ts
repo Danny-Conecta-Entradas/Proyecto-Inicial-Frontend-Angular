@@ -55,6 +55,8 @@ export class DataListComponent implements OnInit {
 
     if (file.size === 0) {
       alert('Cannot upload empty file. Try with another file.')
+
+      target.files = createFileList()
       return
     }
 
@@ -77,7 +79,7 @@ export class DataListComponent implements OnInit {
         return
       }
 
-      alert(`An error happend during the upload of the CSV file.\n${reason.message}\nMake sure that file format is valid.\nSeparator character of the CSV must be a comma.`)
+      alert(`An error happend during the upload of the CSV file.\nMake sure that file format is valid.\nThe file must contain the following columns "name,dni,birth_date" and optionally "photo_url".\nSeparator character of the CSV must be a comma.`)
     })
     .finally(() => {
       this.isLoading = false
