@@ -29,7 +29,7 @@ export default class APIService {
       throw new Error(`"DNI" field is required.`)
     }
 
-    const dniRegExp =  /^[1-9]{8,8}[A-Z]$/
+    const dniRegExp = /^[1-9]{8,8}[A-Z]$/
     if (!dniRegExp.test(data.dni)) {
       throw new Error(`"DNI" field must follow this format "12345678A".`)
     }
