@@ -135,7 +135,15 @@ export default class APIService {
     })
 
     if (response.status !== 200) {
-      throw new Error(`Request rejected with status code ${response.status}.`)
+      let errorMessage: {code: string, message: string}
+
+      try {
+        errorMessage = await response.json()
+      } catch (reason) {
+        throw new Error(`An expected error.`)
+      }
+
+      throw new Error(`Request rejected with status code ${response.status}.`, {cause: errorMessage})
     }
   }
 

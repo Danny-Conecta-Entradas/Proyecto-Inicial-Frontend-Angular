@@ -66,6 +66,17 @@ export class DataListComponent implements OnInit {
       this.fetchData()
     })
     .catch(reason => {
+      if (reason.cause) {
+        const {code, message} = reason.cause
+
+        console.warn('Cause', reason.cause)
+        console.warn(reason)
+
+        alert(message)
+
+        return
+      }
+
       alert(`An error happend during the upload of the CSV file.\n${reason.message}\nMake sure that file format is valid.\nSeparator character of the CSV must be a comma.`)
     })
     .finally(() => {
