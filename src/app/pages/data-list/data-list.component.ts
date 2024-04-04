@@ -85,7 +85,11 @@ export class DataListComponent implements OnInit {
 
     component.prefillData = item
 
-    await component.waitForResult()
+    try {
+      await component.waitForResult()
+    } catch {
+      return
+    }
 
     this._modalService.close()
 

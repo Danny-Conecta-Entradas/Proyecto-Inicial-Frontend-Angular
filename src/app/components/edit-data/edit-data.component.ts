@@ -55,7 +55,8 @@ export class EditDataComponent {
     })
     .catch(reason => {
       console.warn(reason)
-      alert(`An error occurred while updating the data.`)
+
+      alert(reason.message)
 
       for (const failureListener of this._failureListeners) {
         try {
@@ -99,7 +100,7 @@ export class EditDataComponent {
   waitForResult(): Promise<void> {
     return new Promise((resolve, reject) => {
       this.onSuccess(() => resolve())
-      this.onFailure(() => reject())
+      this.onFailure(reason => reject(reason))
     })
   }
 

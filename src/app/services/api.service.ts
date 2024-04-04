@@ -16,11 +16,7 @@ export interface APIModel {
 })
 export default class APIService {
 
-  async sendData(data: APIModel): Promise<unknown> {
-    const endpoint = new URL('/api/send-data/', environment.apiURL)
-
-    const formData = new FormData()
-
+  private validateData(data: APIModel) {
     if (data.name === '') {
       throw new Error(`"Name" field is required.`)
     }
@@ -41,8 +37,16 @@ export default class APIService {
     if (Number.isNaN(data.birth_date)) {
       throw new Error(`"Birth Date" field is required.`)
     }
+  }
 
-    data.creation_date = new Date(data.creation_date).getTime()
+  async sendData(data: APIModel): Promise<unknown> {
+    const endpoint = new URL('/api/send-data/', environment.apiURL)
+
+    this.validateData(data)
+
+    const formData = new FormData()
+
+    data.creation_date = Date.now()
     data.birth_date = new Date(data.birth_date).getTime()
 
     for (const key in data) {
@@ -84,6 +88,8 @@ export default class APIService {
   async editData(data: APIModel) {
     const key = data._key as number
     const endpoint = new URL(`/api/edit-data/${key}`, environment.apiURL)
+
+    this.validateData(data)
 
     const formData = new FormData()
 
